@@ -50,20 +50,29 @@ class PopulateMasariDataCommand extends Command
         $catU20 = AgeCategory::firstOrCreate(['code' => 'U20'], [
             'name_ar' => 'أقل من 20 سنة (النخبة)',
             'name_fr' => 'Moins de 20 ans (Élite)',
-            'min_age' => 18,
-            'max_age' => 20
+            'min_birth_year' => 2006,
+            'max_birth_year' => 2008,
+            'match_duration_minutes' => 90,
+            'substitutions_allowed' => 5,
+            'ball_size' => 5,
         ]);
         $catU17 = AgeCategory::firstOrCreate(['code' => 'U17'], [
             'name_ar' => 'أقل من 17 سنة (الأشبال)',
             'name_fr' => 'Moins de 17 ans (Cadets)',
-            'min_age' => 15,
-            'max_age' => 17
+            'min_birth_year' => 2009,
+            'max_birth_year' => 2011,
+            'match_duration_minutes' => 80,
+            'substitutions_allowed' => 5,
+            'ball_size' => 5,
         ]);
         $catU15 = AgeCategory::firstOrCreate(['code' => 'U15'], [
             'name_ar' => 'أقل من 15 سنة (الأصاغر)',
             'name_fr' => 'Moins de 15 ans (Minimes)',
-            'min_age' => 13,
-            'max_age' => 15
+            'min_birth_year' => 2012,
+            'max_birth_year' => 2013,
+            'match_duration_minutes' => 70,
+            'substitutions_allowed' => 7,
+            'ball_size' => 4,
         ]);
         $targetCategories = [$catU20, $catU17, $catU15];
 

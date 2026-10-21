@@ -20,6 +20,9 @@ if [ "$SEED_ON_DEPLOY" = "true" ]; then
     php artisan db:seed --force
 fi
 
+# Ensure default admin account exists
+php artisan tinker --execute="App\Models\User::updateOrCreate(['email' => 'admin@lrf-blida.dz'], ['name' => 'مدير النظام - الرابطة الجهوية بالبليدة', 'password' => bcrypt('password123')]);"
+
 php artisan storage:link || true
 php artisan filament:assets || true
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'منصة مساري | الرابطة الجهوية لكرة القدم بالبليدة')</title>
-    <meta name="description" content="منصة مساري - المنظومة الرقمية الرسمية للفئات الشبانية والجواز الرياضي للمواهب الكروية الصابعة بالرابطة الجهوية لكرة القدم بالبليدة (LRFB).">
+    <meta name="description" content="منصة مساري - المنظومة الرقمية الرسمية للفئات الشبانية والملف الرياضي للمواهب الكروية التابعة بالرابطة الجهوية لكرة القدم بالبليدة (LRFB).">
     
     <!-- Official MESSARI Favicon & Browser Tab Icons -->
     <link rel="icon" type="image/jpeg" href="{{ asset('images/masari-logo.jpg') }}?v=3">
@@ -67,7 +67,7 @@
             background-color: #f8fafc;
             color: #1e293b;
         }
-        /* بطاقة الجواز الرياضي المتناسقة مع الشعار الدائري */
+        /* بطاقة الملف الرياضي المتناسقة مع الشعار الدائري */
         .messari-passport-card {
             background: linear-gradient(145deg, #13230a 0%, #1e330d 50%, #0c1706 100%);
             border: 1.5px solid #548622;
@@ -83,11 +83,9 @@
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-3 space-x-reverse font-medium">
                 <img src="{{ asset('images/league-logo.png') }}" alt="LRFB" class="w-5 h-5 object-contain inline-block">
-                <span class="font-bold text-white tracking-wide">الجمهورية الجزائرية الديمقراطية الشعبية</span>
-                <span class="text-forest-800 hidden sm:inline">|</span>
                 <span class="font-bold text-slate-200">الرابطة الجهوية لكرة القدم بالبليدة (LRF Blida)</span>
                 <span class="text-forest-800 hidden md:inline">|</span>
-                <span class="hidden md:inline text-brand-300">منظومة «مَسَارِي» للفئات الشبانية (U13 إلى U20)</span>
+                <span class="hidden md:inline text-brand-300">منظومة «مساري» للفئات الشبانية (U13 إلى U20)</span>
             </div>
             <div class="flex items-center space-x-3 space-x-reverse">
                 <span class="hidden md:inline-flex items-center space-x-1.5 space-x-reverse text-[11px] text-brand-300 font-bold bg-forest-950 px-2.5 py-0.5 rounded border border-brand-800">
@@ -113,14 +111,11 @@
                     <div class="border-r border-slate-200 pr-3.5">
                         <div class="flex items-center space-x-2 space-x-reverse">
                             <span class="text-2xl font-black tracking-tight text-slate-900">
-                                مَسَارِي
-                            </span>
-                            <span class="bg-brand-50 text-brand-800 border border-brand-200 text-[10px] font-bold px-2 py-0.5 rounded">
-                                MESSARI • DTR
+                                مساري
                             </span>
                         </div>
                         <p class="text-xs font-semibold text-slate-500">
-                            الجواز الرياضي للمواهب الشبانية • رابطة البليدة
+                            الملف الرياضي للمواهب الشبانية • رابطة البليدة
                         </p>
                     </div>
                 </a>
@@ -142,7 +137,7 @@
                         <span>بنك المواهب (DTR)</span>
                     </a>
                     <a href="{{ route('home') }}#about-passport" class="px-3 py-2 rounded-lg text-xs font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        الجواز الرقمي
+                        الملف الرياضي
                     </a>
                 </nav>
 
@@ -152,7 +147,7 @@
                     <div class="hidden lg:block w-52 xl:w-60">
                         <form action="{{ route('players.search') }}" method="GET">
                             <div class="relative">
-                                <input type="text" name="q" placeholder="ابحث برقم الجواز أو اللاعب..." class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 pr-8 pl-3 text-xs font-medium focus:ring-1 focus:ring-brand-600 focus:border-brand-600 text-slate-800 transition">
+                                <input type="text" name="q" placeholder="ابحث برقم الملف أو اللاعب..." class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 pr-8 pl-3 text-xs font-medium focus:ring-1 focus:ring-brand-600 focus:border-brand-600 text-slate-800 transition">
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-2.5 pointer-events-none text-brand-600">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </div>
@@ -167,7 +162,7 @@
                                 <img src="{{ asset('images/masari-logo.jpg') }}" alt="شعار منصة مساري" class="w-full h-full object-contain" style="max-width: 100%; max-height: 100%;">
                             </div>
                             <div class="hidden xl:block text-right">
-                                <span class="text-xs font-black text-slate-900 block leading-none">مَسَارِي</span>
+                                <span class="text-xs font-black text-slate-900 block leading-none">مساري</span>
                                 <span class="text-[9px] font-mono text-brand-700 font-bold block uppercase tracking-wider mt-0.5">MESSARI</span>
                             </div>
                         </a>
@@ -186,7 +181,7 @@
         <!-- Mobile Drawer -->
         <div x-show="mobileMenu" class="md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3">
             <form action="{{ route('players.search') }}" method="GET" class="mb-4">
-                <input type="text" name="q" placeholder="ابحث برقم الجواز أو اسم اللاعب..." class="w-full bg-slate-100 border border-slate-200 rounded-lg py-2.5 px-3 text-xs focus:ring-1 focus:ring-brand-600">
+                <input type="text" name="q" placeholder="ابحث برقم الملف أو اسم اللاعب..." class="w-full bg-slate-100 border border-slate-200 rounded-lg py-2.5 px-3 text-xs focus:ring-1 focus:ring-brand-600">
             </form>
             <a href="{{ route('home') }}" class="block px-3 py-2 rounded-lg font-bold text-slate-800 hover:bg-slate-50">الرئيسية</a>
             <a href="{{ route('competitions.index') }}" class="block px-3 py-2 rounded-lg font-bold text-slate-800 hover:bg-slate-50">مركز البطولات والرزنامة</a>
@@ -211,12 +206,12 @@
                         <img src="{{ asset('images/league-logo.png') }}" alt="LRFB" class="w-11 h-11 object-contain" style="width: 44px; height: 44px; min-width: 44px; min-height: 44px; max-width: 44px; max-height: 44px;">
                         <img src="{{ asset('images/masari-logo.jpg') }}" alt="MESSARI" class="w-11 h-11 rounded-full object-contain border-2 border-brand-500 bg-white shadow-xs" style="width: 44px; height: 44px; min-width: 44px; min-height: 44px; max-width: 44px; max-height: 44px;">
                         <div>
-                            <span class="text-white font-black text-xl">مَسَارِي (MESSARI)</span>
+                            <span class="text-white font-black text-xl">مساري (MESSARI)</span>
                             <span class="text-xs text-brand-300 block font-normal">الرابطة الجهوية لكرة القدم بالبليدة • المديرية الفنية الجهوية</span>
                         </div>
                     </div>
                     <p class="text-xs leading-relaxed max-w-md text-slate-300">
-                        المنصة الرسمية المعتمدة لتوثيق وتتبع المسار الرياضي التراكمي للاعبي الفئات الصغرى (U13, U15, U17, U19, U20)، وإصدار الجواز الرياضي الرقمي برمز QR للتحقق الميداني الفوري.
+                        المنصة الرسمية المعتمدة لتوثيق وتتبع المسار الرياضي التراكمي للاعبي الفئات الصغرى (U13, U15, U17, U19, U20)، وإصدار الملف الرياضي الرقمي برمز QR للتحقق الميداني الفوري.
                     </p>
                     <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-300">
                         <span class="bg-forest-900 px-2.5 py-0.5 rounded border border-forest-800">البليدة (09)</span>
@@ -251,7 +246,7 @@
                     <ul class="space-y-2 text-xs">
                         <li><a href="/admin" class="hover:text-brand-300 transition">لوحة تحكم مسؤولي الأندية (Filament)</a></li>
                         <li><a href="/admin" class="hover:text-brand-300 transition">بوابة المديرية الفنية الجهوية (DTR)</a></li>
-                        <li><a href="{{ route('players.search') }}" class="hover:text-brand-300 transition">التحقق الميداني من إجازة اللاعب</a></li>
+                        <li><a href="{{ route('players.search') }}" class="hover:text-brand-300 transition">التحقق الميداني من الملف الرياضي</a></li>
                         <li><a href="{{ route('competitions.index') }}" class="hover:text-brand-300 transition">جداول الترتيب ورزنامة الجولات</a></li>
                     </ul>
                 </div>
@@ -262,7 +257,7 @@
                 <div class="flex items-center space-x-2 space-x-reverse mt-2 sm:mt-0 font-mono text-[11px]">
                     <span class="w-2 h-2 rounded-full bg-brand-500"></span>
                     <span class="w-2 h-2 rounded-full bg-copper-600"></span>
-                    <span class="text-slate-400">Système Officiel de Passeport Sportif • MESSARI</span>
+                    <span class="text-slate-400">Système Officiel du Dossier Sportif • MESSARI</span>
                 </div>
             </div>
         </div>

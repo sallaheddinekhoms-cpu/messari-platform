@@ -1,10 +1,10 @@
 @extends('masari.layout')
 
-@section('title', 'الجواز الرياضي البيومتري: ' . $player->full_name_ar . ' (' . $player->passport_number . ') | منصة مساري')
+@section('title', 'الملف الرياضي الرقمي: ' . $player->full_name_ar . ' (' . $player->passport_number . ') | منصة مساري')
 
 @push('styles')
 <style>
-    /* أنماط أمنية وشكل الجواز البيومتري الرسمي */
+    /* أنماط أمنية وشكل الملف الرياضي الرسمي */
     .guilloche-pattern {
         background-color: #0d1a07;
         background-image: 
@@ -86,7 +86,7 @@
             </div>
             <div class="flex items-center space-x-3 space-x-reverse">
                 <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                    الجواز الرياضي البيومتري المعتمد
+                    الملف الرياضي الرقمي المعتمد
                 </h1>
                 <span class="inline-flex items-center space-x-1.5 space-x-reverse bg-brand-50 border border-brand-300 text-brand-800 text-xs font-bold px-2.5 py-0.5 rounded-full">
                     <span class="w-2 h-2 rounded-full bg-brand-600 animate-ping"></span>
@@ -102,7 +102,7 @@
             </button>
             <button onclick="window.print()" class="inline-flex items-center space-x-1.5 space-x-reverse bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 px-3.5 py-2 rounded-xl text-xs font-bold transition shadow-sm">
                 <span>🖨️</span>
-                <span>طباعة الجواز الرسمي</span>
+                <span>طباعة الملف الرياضي</span>
             </button>
             <a href="{{ route('home') }}" class="inline-flex items-center space-x-1.5 space-x-reverse bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-2 rounded-xl text-xs font-bold transition shadow-sm">
                 <span>العودة</span>
@@ -115,7 +115,7 @@
     <div class="no-print flex items-center space-x-2 space-x-reverse mb-6 overflow-x-auto pb-2 border-b border-slate-200 text-xs font-bold">
         <button @click="activeTab = 'passport'" :class="activeTab === 'passport' ? 'bg-forest-950 text-brand-300 border-brand-500 shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-50 border-slate-200'" class="px-4 py-2.5 rounded-xl border transition flex items-center space-x-2 space-x-reverse whitespace-nowrap">
             <span>🪪</span>
-            <span>وثيقة الجواز البيومتري</span>
+            <span>وثيقة الملف الرياضي</span>
         </button>
         <button @click="activeTab = 'dtr'" :class="activeTab === 'dtr' ? 'bg-forest-950 text-brand-300 border-brand-500 shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-50 border-slate-200'" class="px-4 py-2.5 rounded-xl border transition flex items-center space-x-2 space-x-reverse whitespace-nowrap">
             <span>🎯</span>
@@ -132,7 +132,7 @@
     </div>
 
     <!-- ========================================================================================= -->
-    <!-- TAB 1: THE LUXURY OFFICIAL BIOMETRIC PASSPORT CARD (وثيقة الجواز الرياضي البيومتري المعتمد) -->
+    <!-- TAB 1: THE LUXURY OFFICIAL BIOMETRIC CARD (وثيقة الملف الرياضي المعتمد) -->
     <!-- ========================================================================================= -->
     <div x-show="activeTab === 'passport'" class="transition-all duration-300 space-y-8">
         
@@ -142,16 +142,12 @@
             <!-- Top Header: Institutional Emblems & Passport Title -->
             <div class="relative z-10 border-b border-brand-700/60 pb-6 mb-8">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <!-- Right: Republic & League Seal -->
+                    <!-- Right: League Seal -->
                     <div class="flex items-center space-x-4 space-x-reverse">
                         <div class="w-16 h-16 rounded-2xl bg-white p-2 flex items-center justify-center shadow-lg border-2 border-brand-400 flex-shrink-0" style="width: 64px; height: 64px; min-width: 64px; min-height: 64px; max-width: 64px; max-height: 64px;">
                             <img src="{{ asset('images/league-logo.png') }}" alt="شعار رابطة البليدة" style="width: 52px; height: 52px; max-width: 52px; max-height: 52px; object-fit: contain;">
                         </div>
                         <div>
-                            <div class="flex items-center space-x-2 space-x-reverse">
-                                <span class="text-xs font-bold text-copper-400 tracking-wider">الجمهورية الجزائرية الديمقراطية الشعبية</span>
-                                <span class="text-xs">🇩🇿</span>
-                            </div>
                             <h2 class="text-lg sm:text-xl font-black text-white tracking-tight mt-0.5">
                                 الرابطة الجهوية لكرة القدم بالبليدة (LRF BLIDA)
                             </h2>
@@ -168,21 +164,21 @@
                                 <img src="{{ asset('images/masari-logo.jpg') }}" alt="شعار منصة مساري" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; object-fit: contain;">
                             </div>
                             <div>
-                                <span class="text-sm font-black text-white font-mono block">MESSARI PASSPORT</span>
+                                <span class="text-sm font-black text-white font-mono block">MESSARI</span>
                                 <span class="bg-copper-600/90 text-white text-[10px] font-bold px-2.5 py-0.5 rounded uppercase tracking-wider font-mono">
-                                    BIOMETRIC SPORT CARD
+                                    FICHE SPORTIVE
                                 </span>
                             </div>
                         </div>
                         <div class="text-[11px] font-mono text-brand-300 font-bold bg-forest-950 px-3 py-1 rounded-lg border border-brand-700/80">
-                            N°: <span class="text-white">{{ $player->passport_number }}</span>
+                            رقم الملف: <span class="text-white">{{ $player->passport_number }}</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Golden Micro-printed Ribbon -->
                 <div class="mt-4 pt-3 border-t border-forest-800/80 flex items-center justify-between text-[10px] text-brand-300 font-mono overflow-hidden">
-                    <span class="tracking-widest hidden sm:inline">★ FAF VALIDATED ★ LRF BLIDA ★ YOUTH TALENT PASSPORT ★</span>
+                    <span class="tracking-widest hidden sm:inline">★ FAF VALIDATED ★ LRF BLIDA ★ YOUTH TALENT DOSSIER ★</span>
                     <span class="text-copper-400 font-bold">موسم الرياضي المعتمد: 2026 / 2027</span>
                     <span class="tracking-widest hidden md:inline">★ BLIDA • TIPAZA • MEDEA • DJELFA • AIN DEFLA ★</span>
                 </div>
@@ -387,7 +383,7 @@
             <div class="relative z-10 mt-8 pt-5 border-t border-brand-700/60 bg-forest-950/90 p-4 rounded-2xl border border-forest-800 overflow-x-auto text-center sm:text-right">
                 <div class="text-[10px] text-brand-400 font-mono uppercase tracking-widest mb-1.5 flex items-center justify-between">
                     <span>ZONE DE LECTURE AUTOMATIQUE (MRZ • ICAO 9303 COMPLIANT)</span>
-                    <span class="text-copper-400 font-bold">PASSEPORT SPORTIF OFFICIEL</span>
+                    <span class="text-copper-400 font-bold">DOSSIER SPORTIF OFFICIEL</span>
                 </div>
                 @php
                     $cleanLast = strtoupper(preg_replace('/[^A-Za-z]/', '', $player->last_name_fr ?: 'PLAYER'));
@@ -615,7 +611,7 @@
                     <span class="text-white font-semibold">مصادق عليه من المديرية الفنية الجهوية لرابطة البليدة (DTR LRFB)</span>
                 </div>
                 <div class="font-mono text-[11px] text-brand-300">
-                    STATUS: CERTIFIED TALENT • MESSARI DTR
+                    STATUS: CERTIFIED TALENT • MESSARI
                 </div>
             </div>
 

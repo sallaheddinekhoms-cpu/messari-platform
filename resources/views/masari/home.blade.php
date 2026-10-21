@@ -21,8 +21,8 @@
                 </div>
 
                 <h1 class="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight leading-tight">
-                    الجواز الرياضي الرقمي لمواهب الفئات الشبانية
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-brand-200 to-copper-500 block mt-1">«مَسَارِي — MESSARI»</span>
+                    الملف الرياضي الرقمي لمواهب الفئات الشبانية
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-brand-200 to-copper-500 block mt-1">«مساري — MESSARI»</span>
                 </h1>
 
                 <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
@@ -33,9 +33,9 @@
                 <div class="bg-white p-2 rounded-xl shadow-xl flex flex-col sm:flex-row gap-2 max-w-xl border border-slate-200">
                     <form action="{{ route('players.search') }}" method="GET" class="flex-grow flex items-center px-3">
                         <svg class="w-4 h-4 text-slate-400 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                        <input type="text" name="q" placeholder="ابحث باسم اللاعب، رقم الجواز (MESSARI)، أو النادي..." class="w-full text-slate-800 placeholder-slate-400 border-none focus:outline-none text-xs sm:text-sm font-medium">
+                        <input type="text" name="q" placeholder="ابحث باسم اللاعب، رقم الملف (MESSARI)، أو النادي..." class="w-full text-slate-800 placeholder-slate-400 border-none focus:outline-none text-xs sm:text-sm font-medium">
                         <button type="submit" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-2.5 rounded-lg text-xs sm:text-sm transition flex-shrink-0 shadow-sm">
-                            استعلام الجواز
+                            استعلام الملف الرياضي
                         </button>
                     </form>
                 </div>
@@ -149,7 +149,7 @@
                                 <span>مؤهل ومطابق طبياً برمز QR</span>
                             </div>
                             <a href="{{ route('passport.show', $demoPlayer->uuid) }}" class="inline-flex items-center space-x-1 space-x-reverse bg-brand-600 hover:bg-brand-700 text-white font-bold px-3.5 py-1.5 rounded-lg text-xs transition shadow-sm">
-                                <span>معاينة الجواز الرياضي</span>
+                                <span>معاينة الملف الرياضي</span>
                                 <span>←</span>
                             </a>
                         </div>
@@ -269,7 +269,7 @@
                 <!-- Action Button -->
                 <div class="mt-4 pt-2">
                     <a href="{{ route('passport.show', $player->uuid) }}" class="w-full flex items-center justify-center space-x-1 space-x-reverse bg-slate-900 hover:bg-brand-600 text-white font-bold py-2 rounded-xl text-xs transition">
-                        <span>معاينة الجواز الرياضي</span>
+                        <span>معاينة الملف الرياضي</span>
                         <span>←</span>
                     </a>
                 </div>
@@ -394,7 +394,7 @@
     <div class="bg-forest-950 rounded-2xl p-8 sm:p-12 text-white border-2 border-brand-600 shadow-md">
         <div class="max-w-2xl space-y-4">
             <span class="bg-forest-900 text-brand-300 text-xs font-bold px-3 py-1 rounded border border-brand-700">
-                الجواز الرياضي الرقمي للاعب الشاب (Youth Passport)
+                الملف الرياضي الرقمي للاعب الشاب (Youth Sport File)
             </span>
             <h2 class="text-2xl sm:text-3xl font-bold leading-tight">
                 بطاقة هوية رياضية رقمية موحدة لكل موهبة كروية صاعدة

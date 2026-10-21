@@ -10,13 +10,13 @@
         <h1 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">
             نتائج البحث عن: <span class="text-brand-700">"{{ $query }}"</span>
         </h1>
-        <p class="text-xs text-slate-500 mt-1">تم العثور على {{ $players->count() }} لاعب مطابق في سجل الجواز الرياضي بالرابطة الجهوية.</p>
+        <p class="text-xs text-slate-500 mt-1">تم العثور على {{ $players->count() }} لاعب مطابق في سجل الملف الرياضي بالرابطة الجهوية.</p>
     </div>
 
     <!-- Search input -->
     <div class="bg-white p-3 rounded-xl border border-slate-200 mb-8 shadow-xs">
         <form action="{{ route('players.search') }}" method="GET" class="flex gap-2">
-            <input type="text" name="q" value="{{ $query }}" placeholder="ابحث برقم الجواز، الاسم، أو النادي..." class="flex-grow bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2 text-xs sm:text-sm text-slate-800 focus:ring-1 focus:ring-brand-600 focus:border-brand-600">
+            <input type="text" name="q" value="{{ $query }}" placeholder="ابحث برقم الملف، الاسم، أو النادي..." class="flex-grow bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2 text-xs sm:text-sm text-slate-800 focus:ring-1 focus:ring-brand-600 focus:border-brand-600">
             <button type="submit" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-2 rounded-lg text-xs sm:text-sm transition shadow-sm">
                 بحث
             </button>
@@ -50,14 +50,14 @@
                 </div>
 
                 <a href="{{ route('passport.show', $player->uuid) }}" class="bg-slate-900 hover:bg-brand-600 text-white font-bold px-3.5 py-2 rounded-lg text-xs transition flex-shrink-0 shadow-xs">
-                    معاينة الجواز ←
+                    معاينة الملف الرياضي ←
                 </a>
             </div>
         @empty
             <div class="md:col-span-2 bg-white rounded-2xl p-12 text-center border border-slate-200">
                 <span class="text-3xl block mb-2 text-slate-400">🔍</span>
                 <h3 class="text-base font-bold text-slate-800">لم يتم العثور على أي لاعب مطابق</h3>
-                <p class="text-xs text-slate-500 mt-1">تأكد من كتابة الاسم أو رقم الجواز بشكل صحيح (مثال: MESSARI-09-2026-001).</p>
+                <p class="text-xs text-slate-500 mt-1">تأكد من كتابة الاسم أو رقم الملف الرياضي بشكل صحيح (مثال: MESSARI-09-2026-001).</p>
             </div>
         @endforelse
     </div>

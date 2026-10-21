@@ -21,6 +21,7 @@ if [ "$SEED_ON_DEPLOY" = "true" ]; then
 fi
 
 php artisan storage:link || true
+php artisan filament:assets || true
 
 echo "Starting Masari Platform on port ${PORT:-10000}..."
 php artisan serve --host=0.0.0.0 --port=${PORT:-10000}

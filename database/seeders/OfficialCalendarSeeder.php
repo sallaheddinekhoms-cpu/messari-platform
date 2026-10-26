@@ -111,6 +111,30 @@ class OfficialCalendarSeeder extends Seeder
             'CRBSN' => ['17', 'شباب سيدي نايل', 'Chabab Riadhi Sidi Naïl', 'شباب سيدي نايل', '#008000', '#ffffff'],
             'IRON'  => ['17', 'اتحاد أولاد نايل', 'Union Sportive Ouled Naïl', 'اتحاد أولاد نايل', '#ff0000', '#ffffff'],
             'IROZ'  => ['17', 'اتحاد أولاد زنينة', 'Union Sportive Ouled Zenaïna', 'اتحاد أولاد زنينة', '#008000', '#ffffff'],
+
+            // Niveau 1 - Groupe A
+            'WAB'   => ['09', 'الوداد الرياضي لبوفاريك', 'Widad Athlétique Boufarik', 'وداد بوفاريك', '#ff8000', '#000000'],
+            'USMMH' => ['42', 'الاتحاد الرياضي لبلدية حجوط', 'Union Sportive Médinat Hadjout', 'اتحاد حجوط', '#008000', '#ffffff'],
+            'CRBBT' => ['09', 'شباب بني تامو', 'Chabab Riadhi Baladiat Beni Tamou', 'شباب بني تامو', '#0000ff', '#ffffff'],
+            'IBMZ'  => ['09', 'اتحاد موزاية', 'Ittihad Baladiat Mouzaia', 'اتحاد موزاية', '#008000', '#ffffff'],
+            'IRBOY' => ['09', 'اتحاد أولاد يعيش', 'Union Sportive Ouled Yaich', 'اتحاد أولاد يعيش', '#ff0000', '#ffffff'],
+            'IREB'  => ['09', 'اتحاد بوعينان', 'Ittihad Riadhi El Bouinan', 'اتحاد بوعينان', '#0000ff', '#ffffff'],
+            'ACB'   => ['09', 'أمل بوعرفة', 'Amel Club Bouarfa', 'أمل بوعرفة', '#ff8000', '#ffffff'],
+            'IRBB'  => ['09', 'اتحاد بوقرة', 'Union Sportive Bougara', 'اتحاد بوقرة', '#008000', '#ffffff'],
+            'NCBEA' => ['09', 'نجم العفرون', 'Nedjm Chabab El Affroun', 'نجم العفرون', '#ff0000', '#ffffff'],
+            'HRBF'  => ['42', 'هلال فوكة', 'Hilal Riadhi Baladiat Fouka', 'هلال فوكة', '#0000ff', '#ffffff'],
+
+            // Niveau 1 - Groupe B
+            'RAAD'  => ['44', 'رائد عين الدفلى', 'Raed Ain Defla', 'رائد عين الدفلى', '#ff0000', '#ffffff'],
+            'USD'   => ['44', 'اتحاد جليدة', 'Union Sportive Djelida', 'اتحاد جليدة', '#008000', '#ffffff'],
+            'USMT'  => ['26', 'اتحاد تابلاط', 'Union Sportive Medinat Tablat', 'اتحاد تابلاط', '#0000ff', '#ffffff'],
+            'ACM'   => ['26', 'أمل عين المدية', 'Amel Club Médéa', 'أمل عين المدية', '#ff8000', '#ffffff'],
+            'ACSK'  => ['44', 'أمل خميس مليانة', 'Amel Club Khemis Miliana', 'أمل خميس مليانة', '#ff0000', '#ffffff'],
+            'WSM'   => ['26', 'وفاق سيدي محجوب المدية', 'Wifak Sidi Mahdjoub', 'وفاق سيدي محجوب', '#008000', '#ffffff'],
+            'USHE'  => ['42', 'اتحاد حجرة النص', 'Union Sportive Hadjret Ennous', 'اتحاد حجرة النص', '#0000ff', '#ffffff'],
+            'CBBS'  => ['26', 'شباب بني سليمان', 'Chabab Baladiat Beni Slimane', 'شباب بني سليمان', '#ff0000', '#ffffff'],
+            'CRBAO' => ['17', 'شباب عين وسارة', 'Chabab Riadhi Baladiat Ain Oussera', 'شباب عين وسارة', '#008000', '#ffffff'],
+            'RD'    => ['17', 'رائد الجلفة', 'Raed Djelfa', 'رائد الجلفة', '#0000ff', '#ffffff'],
         ];
 
         $wilayas = Wilaya::all()->keyBy('code');
@@ -193,6 +217,38 @@ class OfficialCalendarSeeder extends Seeder
                     9 => [['ESMK', 'WRM'], ['SKAF', 'MCOY'], ['ORBOF', 'OME'], ['ASO', 'OM'], ['USMB', 'RCA'], ['MCBOS', 'CRBZ']],
                     10 => [['ESMK', 'MCOY'], ['CRBZ', 'ORBOF'], ['OM', 'RCA'], ['OME', 'SKAF'], ['MCBOS', 'ASO'], ['WRM', 'USMB']],
                     11 => [['ESMK', 'OME'], ['SKAF', 'CRBZ'], ['ORBOF', 'MCBOS'], ['OM', 'WRM'], ['USMB', 'MCOY'], ['ASO', 'RCA']],
+                ]
+            ],
+            'level_1_a' => [
+                'name_ar' => 'المستوى الأول • فوج (أ)',
+                'name_fr' => 'Championnat Niveau 1 - Groupe A',
+                'clubs' => ['WAB', 'USMMH', 'CRBBT', 'IBMZ', 'IRBOY', 'IREB', 'ACB', 'IRBB', 'NCBEA', 'HRBF'],
+                'rounds' => [
+                    1 => [['WAB', 'USMMH'], ['CRBBT', 'IBMZ'], ['IRBOY', 'IREB'], ['ACB', 'IRBB'], ['NCBEA', 'HRBF']],
+                    2 => [['HRBF', 'WAB'], ['IRBB', 'NCBEA'], ['IREB', 'ACB'], ['IBMZ', 'IRBOY'], ['USMMH', 'CRBBT']],
+                    3 => [['WAB', 'CRBBT'], ['IRBOY', 'USMMH'], ['ACB', 'IBMZ'], ['NCBEA', 'IREB'], ['HRBF', 'IRBB']],
+                    4 => [['IRBB', 'WAB'], ['IREB', 'HRBF'], ['IBMZ', 'NCBEA'], ['USMMH', 'ACB'], ['CRBBT', 'IRBOY']],
+                    5 => [['WAB', 'IRBOY'], ['ACB', 'CRBBT'], ['NCBEA', 'USMMH'], ['HRBF', 'IBMZ'], ['IRBB', 'IREB']],
+                    6 => [['IREB', 'WAB'], ['IBMZ', 'IRBB'], ['USMMH', 'HRBF'], ['CRBBT', 'NCBEA'], ['IRBOY', 'ACB']],
+                    7 => [['WAB', 'ACB'], ['NCBEA', 'IRBOY'], ['HRBF', 'CRBBT'], ['IRBB', 'USMMH'], ['IREB', 'IBMZ']],
+                    8 => [['IBMZ', 'WAB'], ['USMMH', 'IREB'], ['CRBBT', 'IRBB'], ['IRBOY', 'HRBF'], ['ACB', 'NCBEA']],
+                    9 => [['WAB', 'NCBEA'], ['HRBF', 'ACB'], ['IRBB', 'IRBOY'], ['IREB', 'CRBBT'], ['IBMZ', 'USMMH']],
+                ]
+            ],
+            'level_1_b' => [
+                'name_ar' => 'المستوى الأول • فوج (ب)',
+                'name_fr' => 'Championnat Niveau 1 - Groupe B',
+                'clubs' => ['RAAD', 'USD', 'USMT', 'ACM', 'ACSK', 'WSM', 'USHE', 'CBBS', 'CRBAO', 'RD'],
+                'rounds' => [
+                    1 => [['RAAD', 'USD'], ['USMT', 'ACM'], ['ACSK', 'WSM'], ['USHE', 'CBBS'], ['CRBAO', 'RD']],
+                    2 => [['RD', 'RAAD'], ['CBBS', 'CRBAO'], ['WSM', 'USHE'], ['ACM', 'ACSK'], ['USD', 'USMT']],
+                    3 => [['RAAD', 'USMT'], ['ACSK', 'USD'], ['USHE', 'ACM'], ['CRBAO', 'WSM'], ['RD', 'CBBS']],
+                    4 => [['CBBS', 'RAAD'], ['WSM', 'RD'], ['ACM', 'CRBAO'], ['USD', 'USHE'], ['USMT', 'ACSK']],
+                    5 => [['RAAD', 'ACSK'], ['USHE', 'USMT'], ['CRBAO', 'USD'], ['RD', 'ACM'], ['CBBS', 'WSM']],
+                    6 => [['WSM', 'RAAD'], ['ACM', 'CBBS'], ['USD', 'RD'], ['USMT', 'CRBAO'], ['ACSK', 'USHE']],
+                    7 => [['RAAD', 'USHE'], ['CRBAO', 'ACSK'], ['RD', 'USMT'], ['CBBS', 'USD'], ['WSM', 'ACM']],
+                    8 => [['ACM', 'RAAD'], ['USD', 'WSM'], ['USMT', 'CBBS'], ['ACSK', 'RD'], ['USHE', 'CRBAO']],
+                    9 => [['RAAD', 'CRBAO'], ['RD', 'USHE'], ['CBBS', 'ACSK'], ['WSM', 'USMT'], ['ACM', 'USD']],
                 ]
             ],
             'regional_a' => [

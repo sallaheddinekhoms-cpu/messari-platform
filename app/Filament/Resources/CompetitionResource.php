@@ -43,6 +43,20 @@ class CompetitionResource extends Resource
                             ->label('الفئة العمرية')
                             ->relationship('ageCategory', 'name_ar')
                             ->required(),
+                        Forms\Components\Select::make('division_tier')
+                            ->label('القسم / المستوى')
+                            ->options([
+                                'elite' => 'قسم النخبة (Élite)',
+                                'level_1_a' => 'المستوى الأول (أ)',
+                                'level_1_b' => 'المستوى الأول (ب)',
+                                'regional_a' => 'المستوى الجهوي (أ)',
+                                'regional_b' => 'المستوى الجهوي (ب)',
+                                'regional_c' => 'المستوى الجهوي (ج / س)',
+                            ])
+                            ->required(),
+                        Forms\Components\TextInput::make('division_name_ar')
+                            ->label('اسم القسم بالعربية (للعرض)')
+                            ->placeholder('مثال: قسم النخبة أو المستوى الأول فوج (أ)'),
                         Forms\Components\Select::make('type')
                             ->label('نوع المنافسة')
                             ->options([
@@ -74,6 +88,24 @@ class CompetitionResource extends Resource
                     ->label('اسم البطولة')
                     ->searchable()
                     ->weight('bold'),
+                Tables\Columns\TextColumn::make('division_tier')
+                    ->label('القسم')
+                    ->badge()
+                    ->formatStateUsing(fn ($state) => match ($state) {
+                        'elite' => 'قسم النخبة',
+                        'level_1_a' => 'المستوى الأول (أ)',
+                        'level_1_b' => 'المستوى الأول (ب)',
+                        'regional_a' => 'المستوى الجهوي (أ)',
+                        'regional_b' => 'المستوى الجهوي (ب)',
+                        'regional_c' => 'المستوى الجهوي (ج)',
+                        default => $state ?? '—',
+                    })
+                    ->color(fn ($state) => match ($state) {
+                        'elite' => 'warning',
+                        'level_1_a', 'level_1_b' => 'info',
+                        'regional_a', 'regional_b', 'regional_c' => 'success',
+                        default => 'gray',
+                    }),
                 Tables\Columns\TextColumn::make('ageCategory.code')
                     ->label('الفئة')
                     ->badge()
@@ -107,6 +139,16 @@ class CompetitionResource extends Resource
                     }),
             ])
             ->filters([
+                Tables\Filters\SelectFilter::make('division_tier')
+                    ->label('القسم / المستوى')
+                    ->options([
+                        'elite' => 'قسم النخبة',
+                        'level_1_a' => 'المستوى الأول (أ)',
+                        'level_1_b' => 'المستوى الأول (ب)',
+                        'regional_a' => 'المستوى الجهوي (أ)',
+                        'regional_b' => 'المستوى الجهوي (ب)',
+                        'regional_c' => 'المستوى الجهوي (ج)',
+                    ]),
                 Tables\Filters\SelectFilter::make('age_category_id')
                     ->label('الفئة')
                     ->relationship('ageCategory', 'code'),

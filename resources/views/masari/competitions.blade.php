@@ -31,7 +31,7 @@
                     الرزنامات الرسمية لبطولات الفئات الشبانية لموسم 2026 / 2027
                 </h2>
                 <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
-                    تحميل وثائق الرزنامة وجداول الجولات الـ 11 وتوزيع الأفواج المعتمدة من طرف لجنة تنظيم المنافسات (COC) لفئات النخبة والمستوى الجهوي (أفواج أ، ب، ج).
+                    تحميل وثائق الرزنامة وجداول الجولات وتوزيع الأفواج المعتمدة من طرف لجنة تنظيم المنافسات (COC) لأقسام النخبة، المستوى الأول (أ، ب)، والمستوى الجهوي (أ، ب، ج).
                 </p>
             </div>
 
@@ -289,12 +289,12 @@
             </span>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <!-- Group 1: Elite -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Division 1: Elite -->
             <div class="bg-white rounded-2xl p-5 border border-brand-200 shadow-xs flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3 pb-2 border-b border-brand-100">
-                        <span class="text-xs font-black text-brand-700">بطولة النخبة (Élite)</span>
+                        <span class="text-xs font-black text-brand-700">قسم النخبة (Élite)</span>
                         <span class="bg-brand-50 text-brand-700 text-[10px] font-bold px-2 py-0.5 rounded-full">12 فريقاً</span>
                     </div>
                     <ul class="space-y-1.5 text-xs text-slate-700 font-medium">
@@ -317,7 +317,57 @@
                 </div>
             </div>
 
-            <!-- Group 2: Regional A -->
+            <!-- Division 2: Level 1 A -->
+            <div class="bg-white rounded-2xl p-5 border border-blue-200 shadow-xs flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3 pb-2 border-b border-blue-100">
+                        <span class="text-xs font-black text-blue-700">المستوى الأول • فوج (أ)</span>
+                        <span class="bg-blue-50 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full">10 فرق</span>
+                    </div>
+                    <ul class="space-y-1.5 text-xs text-slate-700 font-medium">
+                        <li>• الوداد الرياضي لبوفاريك</li>
+                        <li>• الاتحاد الرياضي لبلدية حجوط</li>
+                        <li>• شباب بني تامو</li>
+                        <li>• اتحاد موزاية</li>
+                        <li>• اتحاد أولاد يعيش</li>
+                        <li>• اتحاد بوعينان</li>
+                        <li>• أمل بوعرفة</li>
+                        <li>• اتحاد بوقرة</li>
+                        <li>• نجم العفرون</li>
+                        <li>• هلال فوكة</li>
+                    </ul>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 text-center">
+                    <span class="text-[11px] text-blue-600 font-semibold">ولايات: البليدة، تيبازة</span>
+                </div>
+            </div>
+
+            <!-- Division 3: Level 1 B -->
+            <div class="bg-white rounded-2xl p-5 border border-indigo-200 shadow-xs flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3 pb-2 border-b border-indigo-100">
+                        <span class="text-xs font-black text-indigo-700">المستوى الأول • فوج (ب)</span>
+                        <span class="bg-indigo-50 text-indigo-700 text-[10px] font-bold px-2 py-0.5 rounded-full">10 فرق</span>
+                    </div>
+                    <ul class="space-y-1.5 text-xs text-slate-700 font-medium">
+                        <li>• رائد عين الدفلى</li>
+                        <li>• اتحاد جليدة</li>
+                        <li>• اتحاد تابلاط</li>
+                        <li>• أمل عين المدية</li>
+                        <li>• أمل خميس مليانة</li>
+                        <li>• وفاق سيدي محجوب المدية</li>
+                        <li>• اتحاد حجرة النص</li>
+                        <li>• شباب بني سليمان</li>
+                        <li>• شباب عين وسارة</li>
+                        <li>• رائد الجلفة</li>
+                    </ul>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 text-center">
+                    <span class="text-[11px] text-indigo-600 font-semibold">ولايات: عين الدفلى، المدية، الجلفة، تيبازة</span>
+                </div>
+            </div>
+
+            <!-- Division 4: Regional A -->
             <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
@@ -343,7 +393,7 @@
                 </div>
             </div>
 
-            <!-- Group 3: Regional B -->
+            <!-- Division 5: Regional B -->
             <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
@@ -370,7 +420,7 @@
                 </div>
             </div>
 
-            <!-- Group 4: Regional C (Djelfa) -->
+            <!-- Division 6: Regional C (Djelfa) -->
             <div class="bg-white rounded-2xl p-5 border border-copper-200 shadow-xs flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3 pb-2 border-b border-copper-100">

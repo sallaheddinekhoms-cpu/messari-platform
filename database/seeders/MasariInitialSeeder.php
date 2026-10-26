@@ -189,6 +189,7 @@ class MasariInitialSeeder extends Seeder
         $clubs = [];
         foreach ($clubsData as $cd) {
             $w = $wilayas[$cd['wilaya_code']] ?? null;
+            $logoCandidate = 'images/clubs/' . strtolower($cd['acronym']) . '.png';
             $clubs[$cd['acronym']] = Club::firstOrCreate(
                 ['acronym' => $cd['acronym']],
                 [
@@ -200,6 +201,7 @@ class MasariInitialSeeder extends Seeder
                     'primary_color' => $cd['primary_color'],
                     'secondary_color' => $cd['secondary_color'],
                     'founded_year' => $cd['founded_year'],
+                    'logo_path' => file_exists(public_path($logoCandidate)) ? $logoCandidate : null,
                     'is_active' => true,
                 ]
             );

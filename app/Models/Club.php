@@ -63,4 +63,22 @@ class Club extends Model
     {
         return $this->hasMany(PlayerLicense::class);
     }
+
+    public function getLogoUrlAttribute(): string
+    {
+        if ($this->logo_path) {
+            if (str_starts_with($this->logo_path, 'http')) {
+                return $this->logo_path;
+            }
+            if (file_exists(public_path($this->logo_path))) {
+                return asset($this->logo_path);
+            }
+            if (file_exists(public_path('storage/' . $this->logo_path))) {
+                return asset('storage/' . $this->logo_path);
+            }
+        }
+        $bg = ltrim($this->primary_color ?? '1e3a12', '#');
+        $color = ltrim($this->secondary_color ?? 'ffffff', '#');
+        return "https://ui-avatars.com/api/?background={$bg}&color={$color}&name=" . urlencode($this->acronym ?: $this->name_ar) . "&bold=true&format=svg";
+    }
 }

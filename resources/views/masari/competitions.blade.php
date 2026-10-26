@@ -172,9 +172,7 @@
                                         <tr class="hover:bg-slate-50 transition">
                                             <td class="py-2.5 px-3 font-bold {{ $index < 2 ? 'text-brand-700' : 'text-slate-400' }}">{{ $index + 1 }}</td>
                                             <td class="py-2.5 px-3 font-bold text-slate-800 flex items-center space-x-2 space-x-reverse">
-                                                <span class="w-6 h-6 rounded bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-[10px] border border-slate-200">
-                                                    {{ $gt->clubTeam?->club?->acronym }}
-                                                </span>
+                                                <img src="{{ $gt->clubTeam?->club?->logo_url }}" alt="{{ $gt->clubTeam?->club?->acronym }}" class="w-7 h-7 rounded-full object-contain bg-white border border-slate-200 flex-shrink-0 p-0.5 shadow-2xs">
                                                 <div>
                                                     <span>{{ $gt->clubTeam?->club?->name_ar }}</span>
                                                     <span class="text-[10px] text-slate-400 block font-normal">{{ $gt->clubTeam?->club?->wilaya?->name_ar }}</span>
@@ -232,9 +230,7 @@
 
                                             <div class="flex items-center justify-between py-1">
                                                 <div class="flex items-center space-x-2 space-x-reverse w-5/12">
-                                                    <span class="w-6 h-6 rounded bg-white border border-slate-200 text-slate-700 flex items-center justify-center font-bold text-[10px] flex-shrink-0">
-                                                        {{ $match->homeTeam?->club?->acronym }}
-                                                    </span>
+                                                    <img src="{{ $match->homeTeam?->club?->logo_url }}" alt="{{ $match->homeTeam?->club?->acronym }}" class="w-7 h-7 rounded-full object-contain bg-white border border-slate-200 flex-shrink-0 p-0.5 shadow-2xs">
                                                     <span class="font-bold text-xs text-slate-900 truncate">{{ $match->homeTeam?->club?->short_name }}</span>
                                                 </div>
 
@@ -252,9 +248,7 @@
 
                                                 <div class="flex items-center space-x-2 space-x-reverse justify-end w-5/12">
                                                     <span class="font-bold text-xs text-slate-900 truncate text-left">{{ $match->awayTeam?->club?->short_name }}</span>
-                                                    <span class="w-6 h-6 rounded bg-white border border-slate-200 text-slate-700 flex items-center justify-center font-bold text-[10px] flex-shrink-0">
-                                                        {{ $match->awayTeam?->club?->acronym }}
-                                                    </span>
+                                                    <img src="{{ $match->awayTeam?->club?->logo_url }}" alt="{{ $match->awayTeam?->club?->acronym }}" class="w-7 h-7 rounded-full object-contain bg-white border border-slate-200 flex-shrink-0 p-0.5 shadow-2xs">
                                                 </div>
                                             </div>
 

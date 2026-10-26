@@ -114,6 +114,31 @@ class OfficialCalendarSeeder extends Seeder
         $wilayas = Wilaya::all()->keyBy('code');
         $clubs = [];
 
+        $logoMap = [
+            'USMB'  => 'images/clubs/usmb.png',
+            'ASO'   => 'images/clubs/aso.png',
+            'RCA'   => 'images/clubs/rca.png',
+            'ESMK'  => 'images/clubs/esmk.png',
+            'ORBOF' => 'images/clubs/orbof.png',
+            'MCBOS' => 'images/clubs/mcbos.png',
+            'SKAF'  => 'images/clubs/skaf.png',
+            'MCOY'  => 'images/clubs/mcoy.png',
+            'CRBAO' => 'images/clubs/crbao.png',
+            'CRBBT' => 'images/clubs/crbbt.png',
+            'WRM'   => 'images/clubs/wrm.png',
+            'WBM'   => 'images/clubs/wrm.png',
+            'MSC'   => 'images/clubs/msc.png',
+            'CRBZ'  => 'images/clubs/crbz.png',
+            'CRZ'   => 'images/clubs/crbz.png',
+            'ACSK'  => 'images/clubs/acsk.png',
+            'OME'   => 'images/clubs/ome.png',
+            'WAB'   => 'images/clubs/wab.png',
+            'WRNAO' => 'images/clubs/wrnao.png',
+            'AEM'   => 'images/clubs/aem.png',
+            'RD'    => 'images/clubs/rd.png',
+            'OM'    => 'images/clubs/om.png',
+        ];
+
         foreach ($clubsDefinitions as $acronym => $cDef) {
             $w = $wilayas[$cDef[0]] ?? null;
             $club = Club::updateOrCreate(
@@ -125,6 +150,7 @@ class OfficialCalendarSeeder extends Seeder
                     'short_name' => $cDef[3],
                     'primary_color' => $cDef[4],
                     'secondary_color' => $cDef[5],
+                    'logo_path' => $logoMap[$acronym] ?? null,
                     'is_active' => true,
                 ]
             );

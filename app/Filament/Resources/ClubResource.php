@@ -71,10 +71,9 @@ class ClubResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('logo_path')
+                Tables\Columns\ImageColumn::make('logo_url')
                     ->label('الشعار')
-                    ->circular()
-                    ->defaultImageUrl(fn (Club $record) => 'https://ui-avatars.com/api/?background=059669&color=fff&name=' . urlencode($record->acronym)),
+                    ->circular(),
                 Tables\Columns\TextColumn::make('name_ar')
                     ->label('النادي')
                     ->searchable()

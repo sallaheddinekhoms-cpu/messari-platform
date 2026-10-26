@@ -110,6 +110,7 @@ class OfficialCalendarSeeder extends Seeder
             'ESL'   => ['17', 'ترجي سيدي لعجال', 'Espérance Sidi Laadjal', 'ترجي سيدي لعجال', '#0000ff', '#ffffff'],
             'CRBSN' => ['17', 'شباب سيدي نايل', 'Chabab Riadhi Sidi Naïl', 'شباب سيدي نايل', '#008000', '#ffffff'],
             'IRON'  => ['17', 'اتحاد أولاد نايل', 'Union Sportive Ouled Naïl', 'اتحاد أولاد نايل', '#ff0000', '#ffffff'],
+            'IROZ'  => ['17', 'اتحاد أولاد زنينة', 'Union Sportive Ouled Zenaïna', 'اتحاد أولاد زنينة', '#008000', '#ffffff'],
         ];
 
         $wilayas = Wilaya::all()->keyBy('code');
@@ -233,17 +234,19 @@ class OfficialCalendarSeeder extends Seeder
             'regional_c' => [
                 'name_ar' => 'المستوى الجهوي • فوج (ج / س)',
                 'name_fr' => 'Championnat Régional - Groupe C (Djelfa)',
-                'clubs' => ['WRNAO', 'IRBHS', 'MCHB', 'JMB', 'FCJ', 'ARBM', 'WBSL', 'ESL', 'CRBSN', 'IRON'],
+                'clubs' => ['CRBSN', 'IRON', 'MCHB', 'WRNAO', 'ARBM', 'WBSL', 'ESL', 'JMB', 'IRBHS', 'FCJ', 'IROZ'],
                 'rounds' => [
-                    1 => [['WRNAO', 'IRBHS'], ['MCHB', 'JMB'], ['FCJ', 'ARBM'], ['WBSL', 'ESL'], ['CRBSN', 'IRON']],
-                    2 => [['JMB', 'WRNAO'], ['IRBHS', 'WBSL'], ['IRON', 'FCJ'], ['ARBM', 'MCHB'], ['ESL', 'CRBSN']],
-                    3 => [['WRNAO', 'MCHB'], ['IRON', 'ARBM'], ['FCJ', 'ESL'], ['WBSL', 'JMB'], ['CRBSN', 'IRBHS']],
-                    4 => [['ARBM', 'WRNAO'], ['IRBHS', 'FCJ'], ['JMB', 'CRBSN'], ['MCHB', 'WBSL'], ['ESL', 'IRON']],
-                    5 => [['WBSL', 'WRNAO'], ['IRON', 'IRBHS'], ['FCJ', 'JMB'], ['ESL', 'ARBM'], ['CRBSN', 'MCHB']],
-                    6 => [['WRNAO', 'CRBSN'], ['IRBHS', 'ESL'], ['ARBM', 'WBSL'], ['JMB', 'IRON'], ['MCHB', 'FCJ']],
-                    7 => [['FCJ', 'WRNAO'], ['IRBHS', 'ARBM'], ['IRON', 'MCHB'], ['ESL', 'JMB'], ['CRBSN', 'WBSL']],
-                    8 => [['WRNAO', 'IRON'], ['JMB', 'IRBHS'], ['MCHB', 'ESL'], ['WBSL', 'FCJ'], ['CRBSN', 'ARBM']],
-                    9 => [['ESL', 'WRNAO'], ['IRBHS', 'MCHB'], ['IRON', 'WBSL'], ['ARBM', 'JMB'], ['FCJ', 'CRBSN']],
+                    1 => [['IRON', 'CRBSN'], ['ESL', 'WBSL'], ['ARBM', 'FCJ'], ['JMB', 'MCHB'], ['IRBHS', 'WRNAO']], // معفى: IROZ
+                    2 => [['MCHB', 'IRON'], ['WRNAO', 'IROZ'], ['WBSL', 'IRBHS'], ['CRBSN', 'ESL'], ['FCJ', 'JMB']], // معفى: ARBM
+                    3 => [['ESL', 'IRON'], ['ARBM', 'WRNAO'], ['IRBHS', 'CRBSN'], ['IROZ', 'WBSL'], ['FCJ', 'MCHB']], // معفى: JMB
+                    4 => [['MCHB', 'ESL'], ['IRON', 'IRBHS'], ['WRNAO', 'JMB'], ['WBSL', 'ARBM'], ['CRBSN', 'IROZ']], // معفى: FCJ
+                    5 => [['ARBM', 'CRBSN'], ['JMB', 'WBSL'], ['IRBHS', 'ESL'], ['IROZ', 'IRON'], ['FCJ', 'WRNAO']], // معفى: MCHB
+                    6 => [['MCHB', 'IRBHS'], ['IRON', 'ARBM'], ['ESL', 'IROZ'], ['WBSL', 'FCJ'], ['CRBSN', 'JMB']], // معفى: WRNAO
+                    7 => [['ARBM', 'ESL'], ['WRNAO', 'MCHB'], ['JMB', 'IRON'], ['IROZ', 'IRBHS'], ['FCJ', 'CRBSN']], // معفى: WBSL
+                    8 => [['MCHB', 'IROZ'], ['IRON', 'FCJ'], ['ESL', 'JMB'], ['WBSL', 'WRNAO'], ['IRBHS', 'ARBM']], // معفى: CRBSN
+                    9 => [['ARBM', 'IROZ'], ['WRNAO', 'CRBSN'], ['WBSL', 'MCHB'], ['JMB', 'IRBHS'], ['FCJ', 'ESL']], // معفى: IRON
+                    10 => [['IRON', 'WRNAO'], ['ARBM', 'MCHB'], ['IRBHS', 'FCJ'], ['CRBSN', 'WBSL'], ['IROZ', 'JMB']], // معفى: ESL
+                    11 => [['MCHB', 'CRBSN'], ['WRNAO', 'ESL'], ['WBSL', 'IRON'], ['JMB', 'ARBM'], ['FCJ', 'IROZ']], // معفى: IRBHS
                 ]
             ],
         ];
@@ -346,6 +349,8 @@ class OfficialCalendarSeeder extends Seeder
                             'is_current' => $isCurrent,
                         ]
                     );
+
+                    GameMatch::where('round_id', $round->id)->delete();
 
                     foreach ($fixtures as $fIndex => $pair) {
                         $homeAcr = $pair[0];

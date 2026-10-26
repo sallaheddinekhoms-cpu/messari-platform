@@ -375,7 +375,7 @@
                 <div>
                     <div class="flex items-center justify-between mb-3 pb-2 border-b border-copper-100">
                         <span class="text-xs font-black text-copper-700">المستوى الجهوي • فوج (ج / س)</span>
-                        <span class="bg-copper-50 text-copper-700 text-[10px] font-bold px-2 py-0.5 rounded-full">10 فرق</span>
+                        <span class="bg-copper-50 text-copper-700 text-[10px] font-bold px-2 py-0.5 rounded-full">11 فريقاً (تحيين رسمي)</span>
                     </div>
                     <ul class="space-y-1.5 text-xs text-slate-700 font-medium">
                         <li class="flex items-center space-x-1.5 space-x-reverse"><span class="w-1.5 h-1.5 rounded-full bg-copper-600"></span><span>أمل حد الصحاري</span></li>
@@ -388,10 +388,12 @@
                         <li class="flex items-center space-x-1.5 space-x-reverse"><span class="w-1.5 h-1.5 rounded-full bg-copper-600"></span><span>ترجي سيدي لعجال</span></li>
                         <li class="flex items-center space-x-1.5 space-x-reverse"><span class="w-1.5 h-1.5 rounded-full bg-copper-600"></span><span>مولودية حاسي بحبح</span></li>
                         <li class="flex items-center space-x-1.5 space-x-reverse"><span class="w-1.5 h-1.5 rounded-full bg-copper-600"></span><span>وداد سيدي لعجال</span></li>
+                        <li class="flex items-center space-x-1.5 space-x-reverse"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span><span class="font-bold text-forest-900">اتحاد أولاد زنينة (IROZ)</span></li>
                     </ul>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 text-center">
-                    <a href="{{ asset('documents/CALENDRIER_JEUNES_REGIONALE_2026_2027.pdf') }}" target="_blank" download="CALENDRIER_JEUNES_REGIONALE_2026_2027.pdf" class="text-[11px] font-bold text-copper-700 hover:underline">تحميل وثيقة الجهوي (PDF) ↓</a>
+                <div class="mt-4 pt-3 border-t border-slate-100 flex flex-col gap-1 text-center">
+                    <a href="{{ asset('documents/CALENDRIER_JEUNES_REGIONALE_C_MAJ_2026_2027.pdf') }}" target="_blank" download="CALENDRIER_JEUNES_REGIONALE_C_MAJ_2026_2027.pdf" class="text-[11px] font-bold text-emerald-700 hover:underline">تحميل تحيين رزنامة فوج ج (PDF) ↓</a>
+                    <a href="{{ asset('documents/CALENDRIER_JEUNES_REGIONALE_2026_2027.pdf') }}" target="_blank" download="CALENDRIER_JEUNES_REGIONALE_2026_2027.pdf" class="text-[10px] text-slate-400 hover:underline">وثيقة الرزنامة الجهوية العامة ↓</a>
                 </div>
             </div>
         </div>

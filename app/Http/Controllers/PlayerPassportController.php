@@ -185,7 +185,7 @@ class PlayerPassportController extends Controller
             'regional_b' => [
                 'name_ar' => 'المستوى الجهوي • فوج (ب)', 
                 'badge' => 'الجهوي (ب)',
-                'desc' => 'ولايات: الشلف، عين الدفلى، تيبازة (12 نادياً)'
+                'desc' => 'ولايات: الشلف، عين الدفلى، تيبازة (11 نادياً)'
             ],
             'regional_c' => [
                 'name_ar' => 'المستوى الجهوي • فوج (ج / س)', 

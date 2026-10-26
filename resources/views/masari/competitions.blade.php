@@ -291,7 +291,7 @@
                 </h3>
             </div>
             <span class="bg-forest-950 text-brand-300 text-xs font-bold px-3 py-1.5 rounded-lg border border-forest-800">
-                المجموع: 46 نادياً معتمداً
+                المجموع: 45 نادياً معتمداً
             </span>
         </div>
 
@@ -355,7 +355,7 @@
                 <div>
                     <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
                         <span class="text-xs font-black text-slate-900">المستوى الجهوي • فوج (ب)</span>
-                        <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full">12 فريقاً</span>
+                        <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full">11 فريقاً</span>
                     </div>
                     <ul class="space-y-1.5 text-xs text-slate-600 font-medium">
                         <li>• شباب العطاف</li>
@@ -369,7 +369,6 @@
                         <li>• اتحاد مليانة</li>
                         <li>• شباب تاوقريت</li>
                         <li>• شباب تيبازة</li>
-                        <li>• شباب سنجاس</li>
                     </ul>
                 </div>
                 <div class="mt-4 pt-3 border-t border-slate-100 text-center">

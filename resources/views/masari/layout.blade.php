@@ -231,8 +231,9 @@
                     </h4>
                     <ul class="space-y-2 text-xs">
                         <li><a href="{{ route('competitions.index', ['division' => 'elite', 'category' => 'U20']) }}" class="hover:text-brand-300 transition">بطولة النخبة (U20, U17, U15)</a></li>
-                        <li><a href="{{ route('competitions.index', ['division' => 'level_1_a']) }}" class="hover:text-brand-300 transition">المستوى الأول (أ، ب)</a></li>
-                        <li><a href="{{ route('competitions.index', ['division' => 'regional_a']) }}" class="hover:text-brand-300 transition">المستوى الجهوي (أ، ب، ج)</a></li>
+                        <li><a href="{{ route('competitions.index', ['division' => 'regional_a']) }}" class="hover:text-brand-300 transition">المستوى الجهوي • فوج (أ)</a></li>
+                        <li><a href="{{ route('competitions.index', ['division' => 'regional_b']) }}" class="hover:text-brand-300 transition">المستوى الجهوي • فوج (ب)</a></li>
+                        <li><a href="{{ route('competitions.index', ['division' => 'regional_c']) }}" class="hover:text-brand-300 transition">المستوى الجهوي • فوج (ج / الجلفة)</a></li>
                         <li><a href="{{ route('media.index') }}" class="hover:text-brand-300 text-amber-300 font-semibold transition flex items-center space-x-1 space-x-reverse"><span>📸</span><span>معرض الصور والفيديوهات</span></a></li>
                     </ul>
                 </div>

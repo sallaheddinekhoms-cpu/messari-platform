@@ -172,12 +172,26 @@ class PlayerPassportController extends Controller
         $activeTab = $request->query('tab', 'standings'); // standings or fixtures
 
         $divisionsList = [
-            'elite' => ['name_ar' => 'بطولة النخبة', 'badge' => 'النخبة'],
-            'level_1_a' => ['name_ar' => 'المستوى الأول (أ)', 'badge' => 'المستوى 1-أ'],
-            'level_1_b' => ['name_ar' => 'المستوى الأول (ب)', 'badge' => 'المستوى 1-ب'],
-            'regional_a' => ['name_ar' => 'المستوى الجهوي (أ)', 'badge' => 'الجهوي-أ'],
-            'regional_b' => ['name_ar' => 'المستوى الجهوي (ب)', 'badge' => 'الجهوي-ب'],
-            'regional_c' => ['name_ar' => 'المستوى الجهوي (ج)', 'badge' => 'الجهوي-ج'],
+            'elite' => [
+                'name_ar' => 'بطولة النخبة (Élite)', 
+                'badge' => 'النخبة',
+                'desc' => 'أندية المحترف 1، القسم 2 وما بين الجهات (12 نادياً)'
+            ],
+            'regional_a' => [
+                'name_ar' => 'المستوى الجهوي • فوج (أ)', 
+                'badge' => 'الجهوي (أ)',
+                'desc' => 'ولايات: البليدة، تيبازة، المدية (12 نادياً)'
+            ],
+            'regional_b' => [
+                'name_ar' => 'المستوى الجهوي • فوج (ب)', 
+                'badge' => 'الجهوي (ب)',
+                'desc' => 'ولايات: الشلف، عين الدفلى، تيبازة (12 نادياً)'
+            ],
+            'regional_c' => [
+                'name_ar' => 'المستوى الجهوي • فوج (ج / س)', 
+                'badge' => 'الجهوي (ج)',
+                'desc' => 'أندية ولاية الجلفة (10 أندية)'
+            ],
         ];
 
         $targetCodes = ['U20', 'U17', 'U15'];
@@ -185,6 +199,10 @@ class PlayerPassportController extends Controller
             ->get()
             ->sortBy(fn ($c) => array_search($c->code, $targetCodes))
             ->values();
+
+        if ($categories->isEmpty()) {
+            $categories = AgeCategory::all();
+        }
 
         $selectedCategory = AgeCategory::where('code', $categoryCode)->first() ?? $categories->first();
 

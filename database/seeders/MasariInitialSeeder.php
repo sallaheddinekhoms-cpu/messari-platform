@@ -106,12 +106,15 @@ class MasariInitialSeeder extends Seeder
             ]
         );
 
-        // 5. Age Categories
+        // 5. Age Categories (المعتمدة رسمياً في رزنامة الرابطة لموسم 2026/2027)
         $categoriesData = [
+            ['code' => 'U20', 'name_ar' => 'أقل من 20 سنة', 'name_fr' => 'Moins de 20 ans', 'min_birth_year' => 2007, 'max_birth_year' => 2009, 'match_duration_minutes' => 90, 'substitutions_allowed' => 5, 'ball_size' => 5],
+            ['code' => 'U17', 'name_ar' => 'أقل من 17 سنة', 'name_fr' => 'Moins de 17 ans', 'min_birth_year' => 2010, 'max_birth_year' => 2011, 'match_duration_minutes' => 80, 'substitutions_allowed' => 5, 'ball_size' => 5],
+            ['code' => 'U15', 'name_ar' => 'أقل من 15 سنة', 'name_fr' => 'Moins de 15 ans', 'min_birth_year' => 2012, 'max_birth_year' => 2013, 'match_duration_minutes' => 70, 'substitutions_allowed' => 7, 'ball_size' => 4],
+            ['code' => 'U18', 'name_ar' => 'أقل من 18 سنة (النخبة)', 'name_fr' => 'Moins de 18 ans', 'min_birth_year' => 2009, 'max_birth_year' => 2009, 'match_duration_minutes' => 90, 'substitutions_allowed' => 5, 'ball_size' => 5],
+            ['code' => 'U16', 'name_ar' => 'أقل من 16 سنة (النخبة)', 'name_fr' => 'Moins de 16 ans', 'min_birth_year' => 2011, 'max_birth_year' => 2011, 'match_duration_minutes' => 80, 'substitutions_allowed' => 5, 'ball_size' => 5],
             ['code' => 'U19', 'name_ar' => 'أواسط ما دون 19 سنة', 'name_fr' => 'Moins de 19 ans', 'min_birth_year' => 2007, 'max_birth_year' => 2008, 'match_duration_minutes' => 90, 'substitutions_allowed' => 5, 'ball_size' => 5],
-            ['code' => 'U17', 'name_ar' => 'أشبال ما دون 17 سنة', 'name_fr' => 'Moins de 17 ans', 'min_birth_year' => 2009, 'max_birth_year' => 2010, 'match_duration_minutes' => 80, 'substitutions_allowed' => 5, 'ball_size' => 5],
-            ['code' => 'U15', 'name_ar' => 'أصاغر ما دون 15 سنة', 'name_fr' => 'Moins de 15 ans', 'min_birth_year' => 2011, 'max_birth_year' => 2012, 'match_duration_minutes' => 70, 'substitutions_allowed' => 7, 'ball_size' => 4],
-            ['code' => 'U13', 'name_ar' => 'براعم ما دون 13 سنة', 'name_fr' => 'Moins de 13 ans', 'min_birth_year' => 2013, 'max_birth_year' => 2014, 'match_duration_minutes' => 60, 'substitutions_allowed' => 9, 'ball_size' => 4],
+            ['code' => 'U13', 'name_ar' => 'براعم ما دون 13 سنة', 'name_fr' => 'Moins de 13 ans', 'min_birth_year' => 2014, 'max_birth_year' => 2015, 'match_duration_minutes' => 60, 'substitutions_allowed' => 9, 'ball_size' => 4],
         ];
 
         $categories = [];

@@ -42,27 +42,23 @@
 
                 <!-- Category Filters (Clean & Harmonious) -->
                 <div class="space-y-2 pt-1">
-                    <span class="text-xs text-slate-400 font-semibold block">تصفح بطولات الفئات الشبانية:</span>
+                    <span class="text-xs text-slate-400 font-semibold block">تصفح بطولات الفئات الشبانية المعتمدة رسمياً:</span>
                     <div class="flex flex-wrap items-center gap-2">
-                        <a href="{{ route('competitions.index', ['category' => 'U13']) }}" class="bg-forest-900 hover:bg-forest-800 text-slate-200 border border-forest-800 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 space-x-reverse">
+                        <a href="{{ route('competitions.index', ['category' => 'U20']) }}" class="bg-forest-900 hover:bg-forest-800 text-slate-200 border border-forest-800 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 space-x-reverse">
                             <span class="w-2 h-2 rounded-full bg-brand-400"></span>
-                            <span>U13 البراعم</span>
-                        </a>
-                        <a href="{{ route('competitions.index', ['category' => 'U15']) }}" class="bg-forest-900 hover:bg-forest-800 text-slate-200 border border-forest-800 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 space-x-reverse">
-                            <span class="w-2 h-2 rounded-full bg-brand-500"></span>
-                            <span>U15 الأصاغر</span>
+                            <span>U20 أقل من 20 سنة</span>
                         </a>
                         <a href="{{ route('competitions.index', ['category' => 'U17']) }}" class="bg-forest-900 hover:bg-forest-800 text-slate-200 border border-forest-800 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 space-x-reverse">
                             <span class="w-2 h-2 rounded-full bg-copper-500"></span>
-                            <span>U17 الأشبال</span>
+                            <span>U17 أقل من 17 سنة</span>
                         </a>
-                        <a href="{{ route('competitions.index', ['category' => 'U19']) }}" class="bg-forest-900 hover:bg-forest-800 text-slate-200 border border-forest-800 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 space-x-reverse">
-                            <span class="w-2 h-2 rounded-full bg-brand-300"></span>
-                            <span>U19 الأواسط</span>
+                        <a href="{{ route('competitions.index', ['category' => 'U15']) }}" class="bg-forest-900 hover:bg-forest-800 text-slate-200 border border-forest-800 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 space-x-reverse">
+                            <span class="w-2 h-2 rounded-full bg-brand-500"></span>
+                            <span>U15 أقل من 15 سنة</span>
                         </a>
-                        <a href="{{ route('competitions.index', ['category' => 'U20']) }}" class="bg-forest-900 hover:bg-forest-800 text-slate-200 border border-forest-800 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 space-x-reverse">
+                        <a href="{{ route('competitions.index', ['category' => 'U13']) }}" class="bg-forest-900 hover:bg-forest-800 text-slate-200 border border-forest-800 px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 space-x-reverse">
                             <span class="w-2 h-2 rounded-full bg-slate-400"></span>
-                            <span>U20 الآمال</span>
+                            <span>U13 البراعم</span>
                         </a>
                     </div>
 

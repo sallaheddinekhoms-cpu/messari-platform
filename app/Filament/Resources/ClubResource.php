@@ -59,9 +59,15 @@ class ClubResource extends Resource
                         Forms\Components\ColorPicker::make('secondary_color')
                             ->label('اللون الثانوي'),
                         Forms\Components\FileUpload::make('logo_path')
-                            ->label('شعار النادي')
+                            ->label('شعار النادي (بدون خلفية - Transparent PNG / WebP / SVG)')
                             ->image()
-                            ->directory('clubs-logos')
+                            ->imageEditor()
+                            ->directory('images/clubs')
+                            ->disk('public')
+                            ->visibility('public')
+                            ->acceptedFileTypes(['image/png', 'image/webp', 'image/svg+xml', 'image/jpeg'])
+                            ->maxSize(5120)
+                            ->helperText('يُفضل رفع الشعار مفرغ الخلفية بدقة واضحة وبصيغة PNG شفافة أو WebP أو SVG.')
                             ->columnSpanFull(),
                     ]),
             ]);
@@ -73,7 +79,17 @@ class ClubResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('logo_url')
                     ->label('الشعار')
-                    ->circular(),
+                    ->square()
+                    ->extraImgAttributes(['class' => 'object-contain max-h-11 bg-transparent p-0.5']),
+                Tables\Columns\IconColumn::make('has_logo')
+                    ->label('حالة الشعار')
+                    ->boolean()
+                    ->state(fn (Club $record): bool => !empty($record->logo_path))
+                    ->trueIcon('heroicon-o-check-circle')
+                    ->falseIcon('heroicon-o-x-circle')
+                    ->trueColor('success')
+                    ->falseColor('danger')
+                    ->tooltip(fn (Club $record): string => $record->logo_path ? 'الشعار متوفر' : 'ينقصه شعار'),
                 Tables\Columns\TextColumn::make('name_ar')
                     ->label('النادي')
                     ->searchable()
@@ -94,12 +110,22 @@ class ClubResource extends Resource
                     ->boolean(),
             ])
             ->filters([
+                Tables\Filters\TernaryFilter::make('has_logo')
+                    ->label('تصفية حسب توفر الشعار')
+                    ->placeholder('جميع الأندية')
+                    ->trueLabel('أندية تملك شعاراً')
+                    ->falseLabel('أندية بدون شعار (ناقصة)')
+                    ->queries(
+                        true: fn ($query) => $query->whereNotNull('logo_path'),
+                        false: fn ($query) => $query->whereNull('logo_path'),
+                    ),
                 Tables\Filters\SelectFilter::make('wilaya_id')
                     ->label('الولاية')
                     ->relationship('wilaya', 'name_ar'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label('تعديل النادي والشعار'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

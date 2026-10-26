@@ -41,7 +41,7 @@
                         </div>
                         <p class="text-xs text-slate-400 font-mono">{{ $player->passport_number }}</p>
                         <p class="text-xs text-slate-600 font-medium mt-0.5 flex items-center space-x-1.5 space-x-reverse">
-                            <img src="{{ $player->currentLicense?->club?->logo_url }}" alt="{{ $player->currentLicense?->club?->acronym }}" class="w-4 h-4 rounded-full object-contain bg-white inline-block">
+                            <img src="{{ $player->currentLicense?->club?->logo_url }}" alt="{{ $player->currentLicense?->club?->acronym }}" class="w-5 h-5 object-contain inline-block">
                             <span>{{ $player->currentLicense?->club?->name_ar ?? 'النادي' }}</span>
                             <span class="bg-brand-50 text-brand-700 text-[9px] font-bold px-1.5 py-0.2 rounded border border-brand-200">
                                 {{ $catCode }}

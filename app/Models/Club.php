@@ -76,6 +76,9 @@ class Club extends Model
             if (file_exists(public_path('storage/' . $this->logo_path))) {
                 return asset('storage/' . $this->logo_path);
             }
+            if (file_exists(storage_path('app/public/' . $this->logo_path))) {
+                return asset('storage/' . $this->logo_path);
+            }
         }
         $bg = ltrim($this->primary_color ?? '1e3a12', '#');
         $color = ltrim($this->secondary_color ?? 'ffffff', '#');

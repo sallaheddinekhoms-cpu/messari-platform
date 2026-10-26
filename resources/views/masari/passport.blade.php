@@ -271,7 +271,7 @@
                         <div class="flex items-center justify-between text-xs pt-1">
                             <div class="flex items-center space-x-2 space-x-reverse">
                                 <span class="text-slate-400 font-medium">النادي الرياضي المعتمد:</span>
-                                <img src="{{ $player->currentLicense?->club?->logo_url }}" alt="{{ $player->currentLicense?->club?->acronym }}" class="w-6 h-6 rounded-full object-contain bg-white border border-brand-500 p-0.5 inline-block shadow-xs">
+                                <img src="{{ $player->currentLicense?->club?->logo_url }}" alt="{{ $player->currentLicense?->club?->acronym }}" class="w-7 h-7 object-contain inline-block drop-shadow-sm">
                                 <strong class="text-white font-bold text-sm">
                                     {{ $player->currentLicense?->club?->name_ar ?? 'النادي الرياضي الهاوي' }}
                                 </strong>
@@ -659,7 +659,7 @@
                             <!-- Season & Club Header -->
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                                 <div class="flex items-center space-x-3 space-x-reverse">
-                                    <img src="{{ $timeline->club?->logo_url }}" alt="{{ $timeline->club?->acronym }}" class="w-10 h-10 rounded-xl object-contain bg-white border border-slate-200 flex-shrink-0 p-1 shadow-2xs">
+                                    <img src="{{ $timeline->club?->logo_url }}" alt="{{ $timeline->club?->acronym }}" class="w-10 h-10 object-contain flex-shrink-0 drop-shadow-xs">
                                     <div>
                                         <h4 class="font-bold text-base text-slate-900">{{ $timeline->club?->name_ar }}</h4>
                                         <span class="text-xs text-slate-500">{{ $timeline->club?->wilaya?->name_ar ?? 'ولاية البليدة' }}</span>
@@ -762,7 +762,7 @@
                         <p class="text-[10px] text-brand-200 font-mono">{{ $player->full_name_fr }}</p>
                         <p class="text-[10px] text-copper-400 font-mono font-bold">N°: {{ $player->passport_number }}</p>
                         <p class="text-[10px] text-slate-300 truncate flex items-center space-x-1.5 space-x-reverse">
-                            <img src="{{ $player->currentLicense?->club?->logo_url }}" alt="{{ $player->currentLicense?->club?->acronym }}" class="w-4 h-4 rounded-full object-contain bg-white inline-block">
+                            <img src="{{ $player->currentLicense?->club?->logo_url }}" alt="{{ $player->currentLicense?->club?->acronym }}" class="w-5 h-5 object-contain inline-block">
                             <span>{{ $player->currentLicense?->club?->name_ar }}</span>
                         </p>
                     </div>

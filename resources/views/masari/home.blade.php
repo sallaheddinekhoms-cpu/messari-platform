@@ -134,7 +134,7 @@
                                 <p class="text-[11px] text-copper-500 font-mono font-bold">{{ $demoPlayer->passport_number }}</p>
                                 <p class="text-xs font-medium text-slate-300 flex items-center space-x-1.5 space-x-reverse pt-0.5">
                                     <span>النادي:</span>
-                                    <img src="{{ $demoPlayer->currentLicense?->club?->logo_url }}" alt="{{ $demoPlayer->currentLicense?->club?->acronym }}" class="w-4 h-4 rounded-full object-contain bg-white inline-block">
+                                    <img src="{{ $demoPlayer->currentLicense?->club?->logo_url }}" alt="{{ $demoPlayer->currentLicense?->club?->acronym }}" class="w-5 h-5 object-contain inline-block">
                                     <strong class="text-white">{{ $demoPlayer->currentLicense?->club?->name_ar ?? 'اتحاد البليدة' }}</strong>
                                 </p>
                             </div>
@@ -336,7 +336,7 @@
                                     <tr class="hover:bg-slate-50 transition">
                                         <td class="py-2.5 px-3 font-bold {{ $index < 2 ? 'text-brand-700' : 'text-slate-400' }}">{{ $index + 1 }}</td>
                                         <td class="py-2.5 px-3 font-bold text-slate-800 flex items-center space-x-2 space-x-reverse">
-                                            <img src="{{ $gt->clubTeam?->club?->logo_url }}" alt="{{ $gt->clubTeam?->club?->acronym }}" class="w-6 h-6 rounded-full object-contain bg-white border border-slate-200 flex-shrink-0 p-0.5 shadow-2xs">
+                                            <img src="{{ $gt->clubTeam?->club?->logo_url }}" alt="{{ $gt->clubTeam?->club?->acronym }}" class="w-7 h-7 object-contain flex-shrink-0">
                                             <span>{{ $gt->clubTeam?->club?->short_name }}</span>
                                         </td>
                                         <td class="py-2.5 px-2 text-center text-slate-600">{{ $gt->played }}</td>
@@ -379,7 +379,7 @@
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-2 space-x-reverse">
-                                        <img src="{{ $match->homeTeam?->club?->logo_url }}" alt="{{ $match->homeTeam?->club?->acronym }}" class="w-5 h-5 rounded-full object-contain bg-white border border-slate-200 flex-shrink-0 p-0.5 shadow-2xs">
+                                        <img src="{{ $match->homeTeam?->club?->logo_url }}" alt="{{ $match->homeTeam?->club?->acronym }}" class="w-6 h-6 object-contain flex-shrink-0">
                                         <span class="font-bold text-xs text-slate-800">{{ $match->homeTeam?->club?->short_name }}</span>
                                     </div>
                                     <div class="bg-slate-900 text-white font-mono px-2.5 py-0.5 rounded text-xs font-bold">
@@ -391,7 +391,7 @@
                                     </div>
                                     <div class="flex items-center space-x-2 space-x-reverse">
                                         <span class="font-bold text-xs text-slate-800">{{ $match->awayTeam?->club?->short_name }}</span>
-                                        <img src="{{ $match->awayTeam?->club?->logo_url }}" alt="{{ $match->awayTeam?->club?->acronym }}" class="w-5 h-5 rounded-full object-contain bg-white border border-slate-200 flex-shrink-0 p-0.5 shadow-2xs">
+                                        <img src="{{ $match->awayTeam?->club?->logo_url }}" alt="{{ $match->awayTeam?->club?->acronym }}" class="w-6 h-6 object-contain flex-shrink-0">
                                     </div>
                                 </div>
                             </div>

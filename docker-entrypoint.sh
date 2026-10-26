@@ -16,8 +16,9 @@ fi
 
 # Run migrations and seeding if needed
 php artisan migrate --force
-if [ "$SEED_ON_DEPLOY" = "true" ]; then
-    php artisan db:seed --force
+if [ "$SEED_ON_DEPLOY" = "true" ] || [ ! -f "/var/www/html/database/.seeded" ]; then
+    php artisan db:seed --force || true
+    touch /var/www/html/database/.seeded
 fi
 
 # Ensure default admin account exists

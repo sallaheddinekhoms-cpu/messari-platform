@@ -322,12 +322,11 @@
                 <div>
                     <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
                         <span class="text-xs font-black text-slate-900">المستوى الجهوي • فوج (أ)</span>
-                        <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full">12 فريقاً</span>
+                        <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full">11 فريقاً (سيدي غيلاس مستبعد)</span>
                     </div>
                     <ul class="space-y-1.5 text-xs text-slate-600 font-medium">
                         <li>• رائد شلالة العذاورة</li>
                         <li>• فريق بوركيكة</li>
-                        <li>• اتحاد سيدي غيلاس</li>
                         <li>• اتحاد شلالة العذاورة</li>
                         <li>• سبورتينغ قرواو</li>
                         <li>• هلال قرواو</li>
@@ -349,9 +348,10 @@
                 <div>
                     <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
                         <span class="text-xs font-black text-slate-900">المستوى الجهوي • فوج (ب)</span>
-                        <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full">11 فريقاً</span>
+                        <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full">12 فريقاً</span>
                     </div>
                     <ul class="space-y-1.5 text-xs text-slate-600 font-medium">
+                        <li>• شباب سنجاس</li>
                         <li>• شباب العطاف</li>
                         <li>• أمل الفرم</li>
                         <li>• هلال الروينة</li>

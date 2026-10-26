@@ -65,6 +65,26 @@
                             <span>U20 الآمال</span>
                         </a>
                     </div>
+
+                    <!-- Quick Official Calendars PDF Download Strip -->
+                    <div class="mt-4 pt-3 border-t border-forest-800 flex flex-wrap items-center gap-2.5 text-xs">
+                        <span class="text-copper-400 font-bold flex items-center space-x-1 space-x-reverse">
+                            <span>📌</span>
+                            <span>رزنامات 2026/2027 الرسمية (PDF):</span>
+                        </span>
+                        <a href="{{ asset('documents/CALENDRIER_JEUNES_ELITE_2026_2027.pdf') }}" target="_blank" download="CALENDRIER_JEUNES_ELITE_2026_2027.pdf" 
+                           class="inline-flex items-center space-x-1.5 space-x-reverse bg-forest-900 hover:bg-forest-800 text-brand-300 px-3 py-1 rounded-lg border border-brand-500/30 transition font-bold shadow-xs">
+                            <span>📄</span>
+                            <span>رزنامة النخبة</span>
+                            <span class="text-[10px] text-brand-400">↓</span>
+                        </a>
+                        <a href="{{ asset('documents/CALENDRIER_JEUNES_REGIONALE_2026_2027.pdf') }}" target="_blank" download="CALENDRIER_JEUNES_REGIONALE_2026_2027.pdf" 
+                           class="inline-flex items-center space-x-1.5 space-x-reverse bg-forest-900 hover:bg-forest-800 text-copper-300 px-3 py-1 rounded-lg border border-copper-500/30 transition font-bold shadow-xs">
+                            <span>📑</span>
+                            <span>رزنامة المستوى الجهوي</span>
+                            <span class="text-[10px] text-copper-400">↓</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 

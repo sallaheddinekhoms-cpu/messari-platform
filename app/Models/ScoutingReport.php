@@ -14,7 +14,7 @@ class ScoutingReport extends Model
         'player_id',
         'match_id',
         'scout_user_id',
-        // 7 DTR Evaluation Pillars
+        // 7 Technical Evaluation Pillars
         'attacking_efficiency',
         'passing_playmaking',
         'dribbling_progression',

@@ -16,7 +16,7 @@ class RegionalCampResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-flag';
 
-    protected static ?string $navigationGroup = 'المديرية الفنية الجهوية DTR';
+    protected static ?string $navigationGroup = 'المديرية الفنية الجهوية';
 
     protected static ?string $modelLabel = 'تجمع منتخب جهوي';
 

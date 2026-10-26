@@ -134,7 +134,7 @@
                     </a>
                     <a href="{{ route('home') }}#featured-talents" class="px-3 py-2 rounded-lg text-xs font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition flex items-center space-x-1.5 space-x-reverse">
                         <span class="w-2 h-2 rounded-full bg-brand-600"></span>
-                        <span>بنك المواهب (DTR)</span>
+                        <span>بنك المواهب الشبانية</span>
                     </a>
                     <a href="{{ route('home') }}#about-passport" class="px-3 py-2 rounded-lg text-xs font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
                         الملف الرياضي
@@ -186,7 +186,7 @@
             <a href="{{ route('home') }}" class="block px-3 py-2 rounded-lg font-bold text-slate-800 hover:bg-slate-50">الرئيسية</a>
             <a href="{{ route('competitions.index') }}" class="block px-3 py-2 rounded-lg font-bold text-slate-800 hover:bg-slate-50">مركز البطولات والرزنامة</a>
             <a href="{{ route('media.index') }}" class="block px-3 py-2 rounded-lg font-bold text-brand-700 bg-brand-50 hover:bg-brand-100">معرض الصور والفيديوهات</a>
-            <a href="{{ route('home') }}#featured-talents" class="block px-3 py-2 rounded-lg font-bold text-slate-800 hover:bg-slate-50">بنك المواهب الشبانية (DTR)</a>
+            <a href="{{ route('home') }}#featured-talents" class="block px-3 py-2 rounded-lg font-bold text-slate-800 hover:bg-slate-50">بنك المواهب الشبانية</a>
             <a href="/admin" class="block px-3 py-2.5 rounded-lg bg-brand-600 text-white font-bold text-center">دخول لوحة الإدارة والأندية</a>
         </div>
     </header>
@@ -246,7 +246,7 @@
                     </h4>
                     <ul class="space-y-2 text-xs">
                         <li><a href="/admin" class="hover:text-brand-300 transition">لوحة تحكم مسؤولي الأندية (Filament)</a></li>
-                        <li><a href="/admin" class="hover:text-brand-300 transition">بوابة المديرية الفنية الجهوية (DTR)</a></li>
+                        <li><a href="/admin" class="hover:text-brand-300 transition">بوابة المديرية الفنية الجهوية</a></li>
                         <li><a href="{{ route('players.search') }}" class="hover:text-brand-300 transition">التحقق الميداني من الملف الرياضي</a></li>
                         <li><a href="{{ route('competitions.index') }}" class="hover:text-brand-300 transition">جداول الترتيب ورزنامة الجولات</a></li>
                     </ul>

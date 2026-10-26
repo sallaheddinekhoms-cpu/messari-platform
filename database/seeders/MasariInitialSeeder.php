@@ -29,7 +29,7 @@ class MasariInitialSeeder extends Seeder
 {
     public function run(): void
     {
-        // 1. Admin & DTR Users
+        // 1. Admin & Technical Direction Users
         $admin = User::firstOrCreate(
             ['email' => 'admin@lrf-blida.dz'],
             [
@@ -39,10 +39,10 @@ class MasariInitialSeeder extends Seeder
             ]
         );
 
-        $dtrUser = User::firstOrCreate(
-            ['email' => 'dtr@lrf-blida.dz'],
+        $techUser = User::firstOrCreate(
+            ['email' => 'technique@lrf-blida.dz'],
             [
-                'name' => 'المدير الفني الجهوي (DTR LRFB)',
+                'name' => 'المدير الفني الجهوي لرابطة البليدة',
                 'password' => Hash::make('password123'),
                 'email_verified_at' => now(),
             ]
@@ -489,9 +489,9 @@ class MasariInitialSeeder extends Seeder
                 );
             }
 
-            // Scouting Report from DTR
+            // Technical Scouting Report
             ScoutingReport::firstOrCreate(
-                ['player_id' => $player->id, 'scout_user_id' => $dtrUser->id],
+                ['player_id' => $player->id, 'scout_user_id' => $techUser->id],
                 [
                     'technical_score' => 9,
                     'tactical_score' => 8,
@@ -506,7 +506,7 @@ class MasariInitialSeeder extends Seeder
             );
         }
 
-        // 11. Regional Camp (DTR Hub)
+        // 11. Regional Camp
         $camp = RegionalCamp::firstOrCreate(
             [
                 'season_id' => $seasonCurrent->id,
@@ -530,7 +530,7 @@ class MasariInitialSeeder extends Seeder
                 'category' => 'announcement',
                 'title' => 'الرابطة الجهوية لكرة القدم بالبليدة تطلق رسمياً منصة «مساري» الرقمية لمتابعة المواهب الشبانية',
                 'excerpt' => 'في خطوة نوعية لتحديث تسيير كرة القدم القاعدية، دشنت رابطة البليدة منصة مساري لتوفير الملف الرياضي الرقمي لجميع لاعبي الفئات الصغرى.',
-                'content' => 'أعلنت الرابطة الجهوية لكرة القدم بالبليدة عن الإطلاق الرسمي لمنظومة «مساري» (MASARI)، المنصة الرقمية المخصصة لتتبع المسار الرياضي التراكمي للمواهب الكروية الصاعدة في فئات U19, U17, U15 و U13. تتيح المنصة لكل لاعب جوازاً رياضياً رقمياً مزوداً برمز QR، إضافة إلى لوحة بيانات متقدمة للمديرية الفنية الجهوية (DTR).',
+                'content' => 'أعلنت الرابطة الجهوية لكرة القدم بالبليدة عن الإطلاق الرسمي لمنظومة «مساري» (MASARI)، المنصة الرقمية المخصصة لتتبع المسار الرياضي التراكمي للمواهب الكروية الصاعدة في فئات U20, U17 و U15. تتيح المنصة لكل لاعب ملفاً رياضياً رقمياً مزوداً برمز QR، إضافة إلى لوحة بيانات متقدمة للمديرية الفنية الجهوية.',
                 'author_id' => $admin->id,
                 'is_published' => true,
                 'published_at' => now(),

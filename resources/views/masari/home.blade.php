@@ -26,7 +26,7 @@
                 </h1>
 
                 <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
-                    المنظومة الرسمية المعتمدة من الرابطة الجهوية لكرة القدم بالبليدة لمتابعة وتوثيق المسار الرياضي التراكمي للاعب الشاب من <strong class="text-white font-bold">فئات البراعم والأصاغر (U13, U15)</strong> إلى <strong class="text-white font-bold">الأشبال والأواسط (U17, U19, U20)</strong>، بالتنسيق الميداني مع المديرية الفنية الجهوية (DTR).
+                    المنظومة الرسمية المعتمدة من الرابطة الجهوية لكرة القدم بالبليدة لمتابعة وتوثيق المسار الرياضي التراكمي للاعب الشاب من <strong class="text-white font-bold">فئات البراعم والأصاغر (U13, U15)</strong> إلى <strong class="text-white font-bold">الأشبال والأواسط (U17, U19, U20)</strong>، بالتنسيق الميداني مع المديرية الفنية الجهوية.
                 </p>
 
                 <!-- Search box in Hero with high precision -->
@@ -205,7 +205,7 @@
     <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200">
         <div>
             <span class="text-xs font-bold text-brand-700 uppercase tracking-wider block mb-1">
-                بنك المواهب والمديرية الفنية الجهوية (DTR Hub)
+                بنك المواهب والمديرية الفنية الجهوية
             </span>
             <h2 class="text-2xl font-black text-slate-900">
                 مواهب الأسبوع المعتمدة بالرابطة الجهوية بالبليدة
@@ -267,13 +267,13 @@
                         </div>
                     </div>
 
-                    <!-- DTR Rating Badge -->
+                    <!-- Technical Rating Badge -->
                     @if($player->scoutingReports->isNotEmpty())
                         @php $rep = $player->scoutingReports->first(); @endphp
                         <div class="mt-2.5 flex items-center justify-between bg-forest-950 text-white px-3 py-1.5 rounded-xl border border-brand-600/70 shadow-2xs">
                             <span class="text-[11px] font-bold text-brand-300 flex items-center space-x-1 space-x-reverse">
                                 <span>🎯</span>
-                                <span>تقييم DTR:</span>
+                                <span>التقييم الفني:</span>
                             </span>
                             <span class="text-xs font-black font-mono text-copper-400 bg-forest-900 px-2 py-0.5 rounded border border-forest-800">
                                 ⭐ {{ number_format($rep->overall_score ?: 8.5, 1) }} / 10

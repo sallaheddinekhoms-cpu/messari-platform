@@ -41,7 +41,7 @@
             <span class="text-slate-400 font-bold pl-1">التصنيف:</span>
             <a href="{{ route('media.index', ['type' => $type, 'category' => 'all']) }}" class="px-2.5 py-1 rounded-lg {{ $category === 'all' ? 'bg-brand-600 text-white font-bold' : 'bg-slate-100 text-slate-600' }}">الكل</a>
             <a href="{{ route('media.index', ['type' => $type, 'category' => 'elite']) }}" class="px-2.5 py-1 rounded-lg {{ $category === 'elite' ? 'bg-brand-600 text-white font-bold' : 'bg-slate-100 text-slate-600' }}">النخبة</a>
-            <a href="{{ route('media.index', ['type' => $type, 'category' => 'camps']) }}" class="px-2.5 py-1 rounded-lg {{ $category === 'camps' ? 'bg-brand-600 text-white font-bold' : 'bg-slate-100 text-slate-600' }}">تربصات DTR</a>
+            <a href="{{ route('media.index', ['type' => $type, 'category' => 'camps']) }}" class="px-2.5 py-1 rounded-lg {{ $category === 'camps' ? 'bg-brand-600 text-white font-bold' : 'bg-slate-100 text-slate-600' }}">التربصات والتجمعات</a>
             <a href="{{ route('media.index', ['type' => $type, 'category' => 'goals']) }}" class="px-2.5 py-1 rounded-lg {{ $category === 'goals' ? 'bg-brand-600 text-white font-bold' : 'bg-slate-100 text-slate-600' }}">أهداف الأسبوع</a>
         </div>
     </div>

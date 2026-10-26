@@ -117,9 +117,9 @@
             <span>🪪</span>
             <span>وثيقة الملف الرياضي</span>
         </button>
-        <button @click="activeTab = 'dtr'" :class="activeTab === 'dtr' ? 'bg-forest-950 text-brand-300 border-brand-500 shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-50 border-slate-200'" class="px-4 py-2.5 rounded-xl border transition flex items-center space-x-2 space-x-reverse whitespace-nowrap">
+        <button @click="activeTab = 'rating'" :class="activeTab === 'rating' ? 'bg-forest-950 text-brand-300 border-brand-500 shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-50 border-slate-200'" class="px-4 py-2.5 rounded-xl border transition flex items-center space-x-2 space-x-reverse whitespace-nowrap">
             <span>🎯</span>
-            <span>تقييم المديرية الفنية (DTR 7-Pillars)</span>
+            <span>تقييم المديرية الفنية (ركائز الأداء السبع)</span>
             @if($primaryReport)
                 <span class="bg-copper-600 text-white text-[10px] px-1.5 py-0.2 rounded font-mono font-bold">{{ number_format($overallScore, 1) }}</span>
             @endif
@@ -368,7 +368,7 @@
                         <div class="bg-forest-950/90 p-4 rounded-xl border border-copper-600/50 text-xs text-slate-200">
                             <div class="flex items-center space-x-1.5 space-x-reverse text-copper-400 font-bold mb-1">
                                 <span>📋</span>
-                                <span>ملاحظات المديرية الفنية حول مسار اللاعب (DTR Note):</span>
+                                <span>ملاحظات المديرية الفنية حول مسار اللاعب:</span>
                             </div>
                             <p class="leading-relaxed text-slate-300">
                                 {{ $player->bio }}
@@ -403,9 +403,9 @@
     </div>
 
     <!-- ========================================================================================= -->
-    <!-- TAB 2: DTR 7-PILLARS PERFORMANCE DASHBOARD (لوحة ركائز التقييم السبع المعتمدة) -->
+    <!-- TAB 2: 7-PILLARS PERFORMANCE DASHBOARD (لوحة ركائز التقييم السبع المعتمدة) -->
     <!-- ========================================================================================= -->
-    <div x-show="activeTab === 'dtr'" class="transition-all duration-300 space-y-6">
+    <div x-show="activeTab === 'rating'" class="transition-all duration-300 space-y-6">
         @php
             $att = $primaryReport?->attacking_efficiency ?? 8.2;
             $pass = $primaryReport?->passing_playmaking ?? 8.5;
@@ -425,9 +425,9 @@
                         🎯
                     </div>
                     <div>
-                        <span class="text-xs font-bold text-copper-400 font-mono tracking-wider block">DIRECTION TECHNIQUE RÉGIONALE (DTR)</span>
+                        <span class="text-xs font-bold text-copper-400 font-mono tracking-wider block">DIRECTION TECHNIQUE RÉGIONALE</span>
                         <h2 class="text-xl sm:text-2xl font-black text-white mt-0.5">
-                            بطاقة التقييم الفني للموهبة (DTR 7-Pillar Rating)
+                            بطاقة التقييم الفني للموهبة (ركائز الأداء السبع)
                         </h2>
                         <p class="text-xs text-brand-200 mt-0.5">
                             التقييم التراكمي الميداني المعتمد لمتابعة وتطوير لاعبي فئات النخبة والمستويات الجهوية.
@@ -604,11 +604,11 @@
                 </div>
             @endif
 
-            <!-- DTR Certification Stamp Badge -->
+            <!-- Technical Certification Stamp Badge -->
             <div class="mt-6 pt-4 border-t border-forest-800/80 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-400 gap-2">
                 <div class="flex items-center space-x-2 space-x-reverse">
                     <span class="text-copper-400 font-bold">ختم الاعتماد الفني:</span>
-                    <span class="text-white font-semibold">مصادق عليه من المديرية الفنية الجهوية لرابطة البليدة (DTR LRFB)</span>
+                    <span class="text-white font-semibold">مصادق عليه من المديرية الفنية الجهوية لرابطة البليدة (LRFB)</span>
                 </div>
                 <div class="font-mono text-[11px] text-brand-300">
                     STATUS: CERTIFIED TALENT • MESSARI

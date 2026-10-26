@@ -37,7 +37,7 @@ class MasariOverviewWidget extends BaseWidget
                 ->descriptionIcon('heroicon-m-user-group')
                 ->color('warning'),
 
-            Stat::make('بنك تقارير المعاينة (DTR)', $totalReports)
+            Stat::make('بنك تقارير المعاينة الفنية', $totalReports)
                 ->description('المواهب المرصودة للانتقاء الجهوي')
                 ->descriptionIcon('heroicon-m-star')
                 ->color('danger'),

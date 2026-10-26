@@ -16,7 +16,7 @@ class ScoutingReportResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-magnifying-glass-circle';
 
-    protected static ?string $navigationGroup = 'المديرية الفنية الجهوية DTR';
+    protected static ?string $navigationGroup = 'المديرية الفنية الجهوية';
 
     protected static ?string $modelLabel = 'تقرير معاينة فنية';
 
@@ -50,7 +50,7 @@ class ScoutingReportResource extends Resource
                             ->searchable(),
                     ]),
 
-                Forms\Components\Section::make('معايير التقييم الفني السبعة المعتمدة (DTR 7-Pillar Rating)')
+                Forms\Components\Section::make('معايير التقييم الفني السبعة المعتمدة')
                     ->description('تقييم ركائز الأداء السبع من 1 إلى 10 بحسب دفتر شروط المتابعة الفنية للرابطة')
                     ->columns(4)
                     ->schema([
@@ -135,7 +135,7 @@ class ScoutingReportResource extends Resource
                             ->required(),
 
                         Forms\Components\Select::make('recommendation')
-                            ->label('توصية المديرية الفنية (DTR)')
+                            ->label('توصية المديرية الفنية')
                             ->options([
                                 'regional_selection' => 'استدعاء فوري للمنتخب الجهوي',
                                 'keep_monitoring' => 'مواصلة المتابعة الدورية',

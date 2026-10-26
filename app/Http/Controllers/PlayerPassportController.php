@@ -28,7 +28,7 @@ class PlayerPassportController extends Controller
 
         $categories = AgeCategory::all();
 
-        // Featured talents (players evaluated by DTR)
+        // Featured talents (players evaluated by Regional Technical Direction)
         $featuredPlayers = Player::with(['currentLicense.club', 'currentLicense.ageCategory', 'scoutingReports'])
             ->has('scoutingReports')
             ->latest()
@@ -97,7 +97,7 @@ class PlayerPassportController extends Controller
 
                 $achievement = null;
                 if ($season->name === '2023/2024') $achievement = 'وصيف بطل دورة كؤوس الرابطة للفئات الصغرى';
-                if ($season->name === '2025/2026') $achievement = 'دعوة رسمية لتربص انتقاء المنتخب الجهوي (DTR)';
+                if ($season->name === '2025/2026') $achievement = 'دعوة رسمية لتربص انتقاء المنتخب الجهوي';
 
                 \App\Models\CareerTimeline::create([
                     'player_id' => $player->id,
@@ -117,7 +117,7 @@ class PlayerPassportController extends Controller
             $player->load(['careerTimelines' => fn ($q) => $q->join('seasons', 'career_timelines.season_id', '=', 'seasons.id')->orderBy('seasons.start_date', 'asc')->select('career_timelines.*'), 'careerTimelines.club', 'careerTimelines.season', 'careerTimelines.ageCategory']);
         }
 
-        // Ensure player has an official DTR scouting report
+        // Ensure player has an official technical scouting report
         if ($player->scoutingReports->isEmpty()) {
             $scout = \App\Models\User::first();
             $att = round(rand(75, 95) / 10, 1);

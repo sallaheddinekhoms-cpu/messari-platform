@@ -23,7 +23,7 @@ use Illuminate\Support\Str;
 class PopulateMasariDataCommand extends Command
 {
     protected $signature = 'messari:populate-full-system';
-    protected $description = 'Populate all divisions (Élite, Niveau 1, Régional) for U20, U17, U15, career timelines from 2021, DTR 7-pillar ratings, and media gallery.';
+    protected $description = 'Populate all divisions (Élite, Niveau 1, Régional) for U20, U17, U15, career timelines from 2021, 7-pillar technical ratings, and media gallery.';
 
     public function handle()
     {
@@ -274,7 +274,7 @@ class PopulateMasariDataCommand extends Command
                 } elseif ($sName === '2024/2025' && $goalsCount > 6) {
                     $achievement = 'بطل كأس الرابطة الجهوية بالبليدة U17';
                 } elseif ($sName === '2025/2026') {
-                    $achievement = 'دعوة رسمية لتربص انتقاء المنتخب الجهوي (DTR)';
+                    $achievement = 'دعوة رسمية لتربص انتقاء المنتخب الجهوي';
                 }
 
                 CareerTimeline::updateOrCreate([
@@ -296,12 +296,14 @@ class PopulateMasariDataCommand extends Command
         }
         $this->info('Career timelines from 2021 seeded successfully.');
 
-        // 5. Seed Advanced 7-Pillar DTR Scouting Reports
-        $adminUser = User::first() ?? User::create([
-            'name' => 'المديرية الفنية الجهوية DTR',
-            'email' => 'dtr@lrf-blida.dz',
-            'password' => bcrypt('password123'),
-        ]);
+        // 5. Seed Advanced 7-Pillar Technical Scouting Reports
+        $adminUser = User::where('email', 'technique@lrf-blida.dz')->orWhere('email', 'dtr@lrf-blida.dz')->first() 
+            ?? User::first() 
+            ?? User::create([
+                'name' => 'المديرية الفنية الجهوية',
+                'email' => 'technique@lrf-blida.dz',
+                'password' => bcrypt('password123'),
+            ]);
 
         $featured = Player::take(25)->get();
         foreach ($featured as $fp) {
@@ -342,7 +344,7 @@ class PopulateMasariDataCommand extends Command
                 'visibility' => 'public_badge',
             ]);
         }
-        $this->info('7-Pillar DTR Scouting Reports populated.');
+        $this->info('7-Pillar Technical Scouting Reports populated.');
 
         // 6. Media Gallery (Photos and Videos)
         MediaGallery::truncate();

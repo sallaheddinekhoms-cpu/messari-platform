@@ -50,7 +50,7 @@ class MediaGalleryResource extends Resource
                                 'elite' => 'بطولة النخبة (U20, U17, U15)',
                                 'level_1' => 'المستوى الأول (Niveau 1)',
                                 'regional' => 'المستوى الجهوي (Régional)',
-                                'camps' => 'تجمعات وانتقاءات DTR',
+                                'camps' => 'تجمعات وانتقاءات جهوية',
                                 'all' => 'عام / كل الفئات',
                             ])
                             ->required()
@@ -127,7 +127,7 @@ class MediaGalleryResource extends Resource
                         'elite' => 'النخبة',
                         'level_1' => 'المستوى الأول',
                         'regional' => 'المستوى الجهوي',
-                        'camps' => 'تجمعات DTR',
+                        'camps' => 'تجمعات جهوية',
                     ]),
             ])
             ->actions([

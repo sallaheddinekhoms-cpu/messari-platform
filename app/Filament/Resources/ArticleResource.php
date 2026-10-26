@@ -38,7 +38,7 @@ class ArticleResource extends Resource
                             ->label('التصنيف الإعلامي')
                             ->options([
                                 'talent_of_week' => '⭐ موهبة الأسبوع (Talent of the Week)',
-                                'tactical_review' => 'تحليل تكتيكي وفني (DTR)',
+                                'tactical_review' => 'تحليل تكتيكي وفني',
                                 'medical_advice' => 'إرشادات طبية وتغذية رياضية',
                                 'academy_focus' => 'ملف خاص عن مدرسة كروية',
                                 'announcement' => 'بيان وبلاغ رسمي للرابطة',

@@ -20,6 +20,9 @@ class User extends Authenticatable implements FilamentUser
      */
     public function canAccessPanel(Panel $panel): bool
     {
+        if ($panel->getId() === 'admin') {
+            return $this->role === 'admin';
+        }
         return true;
     }
 
@@ -29,10 +32,29 @@ class User extends Authenticatable implements FilamentUser
      * @var list<string>
      */
     protected $fillable = [
+        'club_id',
         'name',
         'email',
+        'role',
+        'is_active',
+        'phone',
         'password',
     ];
+
+    public function club()
+    {
+        return $this->belongsTo(Club::class);
+    }
+
+    public function isClub(): bool
+    {
+        return $this->role === 'club' && !empty($this->club_id);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
 
     /**
      * The attributes that should be hidden for serialization.

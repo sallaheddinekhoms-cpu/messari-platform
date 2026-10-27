@@ -87,13 +87,13 @@
                 <span class="text-forest-800 hidden md:inline">|</span>
                 <span class="hidden md:inline text-brand-300">منظومة «مساري» للفئات الشبانية (U13 إلى U20)</span>
             </div>
-            <div class="flex items-center space-x-3 space-x-reverse">
-                <span class="hidden md:inline-flex items-center space-x-1.5 space-x-reverse text-[11px] text-brand-300 font-bold bg-forest-950 px-2.5 py-0.5 rounded border border-brand-800">
-                    <span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span>
-                    <span>النظام معتمد رسمياً</span>
-                </span>
-                <a href="/admin" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-3.5 py-1 rounded-lg text-xs transition shadow-sm">
-                    فضاء الإدارة والأندية
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <a href="{{ route('club.login') }}" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-3.5 py-1 rounded-lg text-xs transition shadow-xs flex items-center space-x-1.5 space-x-reverse">
+                    <span>🛡️</span>
+                    <span>فضاء الأندية</span>
+                </a>
+                <a href="/admin" class="bg-forest-950 hover:bg-forest-800 text-slate-300 hover:text-white font-bold px-3 py-1 rounded-lg text-xs transition border border-forest-700">
+                    لوحة الإدارة
                 </a>
             </div>
         </div>
@@ -138,6 +138,10 @@
                     </a>
                     <a href="{{ route('home') }}#about-passport" class="px-3 py-2 rounded-lg text-xs font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
                         الملف الرياضي
+                    </a>
+                    <a href="{{ route('club.login') }}" class="px-3 py-2 rounded-lg text-xs font-bold transition {{ request()->routeIs('club.*') ? 'bg-emerald-50 text-emerald-800 border border-emerald-300' : 'text-emerald-800 hover:text-emerald-900 bg-emerald-50/60 hover:bg-emerald-100/80 border border-emerald-200' }} flex items-center space-x-1.5 space-x-reverse">
+                        <span>🛡️</span>
+                        <span>بوابة الأندية</span>
                     </a>
                 </nav>
 

@@ -64,6 +64,16 @@ class Club extends Model
         return $this->hasMany(PlayerLicense::class);
     }
 
+    public function user(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(User::class);
+    }
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
+
     public function getLogoUrlAttribute(): string
     {
         if ($this->logo_path) {

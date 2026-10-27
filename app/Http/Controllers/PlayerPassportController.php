@@ -28,19 +28,12 @@ class PlayerPassportController extends Controller
 
         $categories = AgeCategory::all();
 
-        // Featured talents (players evaluated by Regional Technical Direction)
+        // Featured talents (players with official biometric photos)
         $featuredPlayers = Player::with(['currentLicense.club', 'currentLicense.ageCategory', 'scoutingReports'])
-            ->has('scoutingReports')
+            ->whereNotNull('photo_path')
             ->latest()
             ->take(8)
             ->get();
-
-        if ($featuredPlayers->isEmpty()) {
-            $featuredPlayers = Player::with(['currentLicense.club', 'currentLicense.ageCategory', 'scoutingReports'])
-                ->latest()
-                ->take(8)
-                ->get();
-        }
 
         // Recent & upcoming youth matches
         $recentMatches = GameMatch::with(['homeTeam.club', 'awayTeam.club', 'stadium', 'round.group.competition.ageCategory'])

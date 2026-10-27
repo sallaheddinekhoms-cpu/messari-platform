@@ -116,4 +116,18 @@ class Player extends Model
     {
         return $this->birth_date ? $this->birth_date->age : 0;
     }
+
+    public function getPhotoUrlAttribute(): string
+    {
+        if ($this->photo_path) {
+            if (str_starts_with($this->photo_path, 'http') || str_starts_with($this->photo_path, '//')) {
+                return $this->photo_path;
+            }
+            if (str_starts_with($this->photo_path, 'images/')) {
+                return asset($this->photo_path);
+            }
+            return asset('storage/' . $this->photo_path);
+        }
+        return asset('images/default-avatar.png');
+    }
 }

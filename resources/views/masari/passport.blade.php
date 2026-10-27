@@ -194,7 +194,7 @@
                     <div class="relative group">
                         <div class="w-40 h-52 rounded-2xl bg-forest-900 border-2 border-copper-500 overflow-hidden shadow-2xl relative flex items-center justify-center">
                             @if($player->photo_path)
-                                <img src="{{ asset('storage/' . $player->photo_path) }}" alt="{{ $player->full_name_ar }}" class="w-full h-full object-cover">
+                                <img src="{{ $player->photo_url }}" alt="{{ $player->full_name_ar }}" class="w-full h-full object-cover">
                             @else
                                 <div class="flex flex-col items-center justify-center text-slate-300 space-y-2">
                                     <span class="text-5xl">⚽</span>
@@ -752,7 +752,7 @@
                 <div class="flex items-center space-x-3 space-x-reverse mb-3">
                     <div class="w-16 h-20 rounded-xl bg-forest-900 border-2 border-brand-400 overflow-hidden flex-shrink-0 flex items-center justify-center text-3xl shadow">
                         @if($player->photo_path)
-                            <img src="{{ asset('storage/' . $player->photo_path) }}" alt="{{ $player->full_name_ar }}" class="w-full h-full object-cover">
+                            <img src="{{ $player->photo_url }}" alt="{{ $player->full_name_ar }}" class="w-full h-full object-cover">
                         @else
                             <span class="text-brand-300">⚽</span>
                         @endif

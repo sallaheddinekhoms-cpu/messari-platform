@@ -113,7 +113,7 @@
                             <div class="w-22 h-26 rounded-xl bg-forest-950 border border-brand-600/70 p-1 flex-shrink-0 shadow relative">
                                 <div class="w-full h-full rounded-lg overflow-hidden flex items-center justify-center text-3xl font-black bg-forest-900">
                                     @if($demoPlayer->photo_path)
-                                        <img src="{{ asset('storage/' . $demoPlayer->photo_path) }}" alt="{{ $demoPlayer->full_name_ar }}" class="w-full h-full object-cover">
+                                        <img src="{{ $demoPlayer->photo_url }}" alt="{{ $demoPlayer->full_name_ar }}" class="w-full h-full object-cover">
                                     @else
                                         <span class="text-brand-300">⚽</span>
                                     @endif

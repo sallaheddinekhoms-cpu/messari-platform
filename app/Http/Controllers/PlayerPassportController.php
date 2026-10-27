@@ -246,16 +246,24 @@ class PlayerPassportController extends Controller
      */
     public function search(Request $request)
     {
-        $query = $request->input('q');
+        $query = trim($request->input('q', ''));
 
-        $players = Player::with(['currentLicense.club', 'currentLicense.ageCategory'])
-            ->where('passport_number', 'LIKE', "%{$query}%")
-            ->orWhere('first_name_ar', 'LIKE', "%{$query}%")
-            ->orWhere('last_name_ar', 'LIKE', "%{$query}%")
-            ->orWhere('first_name_fr', 'LIKE', "%{$query}%")
-            ->orWhere('last_name_fr', 'LIKE', "%{$query}%")
-            ->take(15)
-            ->get();
+        if (empty($query)) {
+            $players = collect();
+        } else {
+            $players = Player::with(['currentLicense.club', 'currentLicense.ageCategory'])
+                ->where(function ($q) use ($query) {
+                    $q->where('passport_number', 'LIKE', "%{$query}%")
+                      ->orWhere('first_name_ar', 'LIKE', "%{$query}%")
+                      ->orWhere('last_name_ar', 'LIKE', "%{$query}%")
+                      ->orWhere('first_name_fr', 'LIKE', "%{$query}%")
+                      ->orWhere('last_name_fr', 'LIKE', "%{$query}%")
+                      ->orWhereHas('licenses', fn($l) => $l->where('license_number', 'LIKE', "%{$query}%"))
+                      ->orWhereHas('currentLicense.club', fn($c) => $c->where('name_ar', 'LIKE', "%{$query}%")->orWhere('name_fr', 'LIKE', "%{$query}%"));
+                })
+                ->take(30)
+                ->get();
+        }
 
         return view('masari.search', compact('players', 'query'));
     }

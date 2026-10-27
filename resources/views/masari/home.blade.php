@@ -191,8 +191,8 @@
                 <div class="text-xs font-bold text-slate-500 mt-1">نادياً معتمداً عبر 6 ولايات</div>
             </div>
             <div class="border-l border-slate-200 last:border-none">
-                <div class="text-3xl font-black text-brand-700 font-mono">6</div>
-                <div class="text-xs font-bold text-slate-500 mt-1">فئات شبانية مدمجة (U20 إلى U13)</div>
+                <div class="text-3xl font-black text-brand-700 font-mono">18</div>
+                <div class="text-xs font-bold text-slate-500 mt-1">بطولة رسمية عبر 6 مستويات</div>
             </div>
             <div>
                 <div class="text-3xl font-black text-slate-900 font-mono">{{ $stats['total_matches'] }}+</div>
@@ -237,8 +237,12 @@
 
                     <!-- Player Info -->
                     <div class="flex items-center space-x-3 space-x-reverse mb-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-700 border border-brand-200 flex items-center justify-center font-bold text-lg flex-shrink-0 group-hover:scale-105 transition">
-                            {{ mb_substr($player->first_name_ar, 0, 1) }}
+                        <div class="w-12 h-14 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition shadow-2xs relative">
+                            @if($player->photo_path)
+                                <img src="{{ $player->photo_url }}" alt="{{ $player->full_name_ar }}" class="w-full h-full object-cover">
+                            @else
+                                <span class="text-brand-700 font-bold text-base">{{ mb_substr($player->first_name_ar, 0, 1) }}</span>
+                            @endif
                         </div>
                         <div>
                             <h3 class="font-bold text-slate-900 text-sm leading-tight group-hover:text-brand-700 transition">

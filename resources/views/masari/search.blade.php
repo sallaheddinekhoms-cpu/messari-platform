@@ -31,15 +31,24 @@
             @endphp
             <div class="bg-white p-4 rounded-xl border border-slate-200 hover:border-brand-500 transition flex items-center justify-between shadow-xs">
                 <div class="flex items-center space-x-3 space-x-reverse">
-                    <div class="w-12 h-12 rounded-lg bg-brand-50 text-brand-700 border border-brand-200 font-bold flex items-center justify-center text-lg flex-shrink-0">
-                        {{ mb_substr($player->first_name_ar, 0, 1) }}
+                    <div class="w-12 h-14 rounded-lg bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center flex-shrink-0 relative shadow-2xs">
+                        @if($player->photo_path)
+                            <img src="{{ $player->photo_url }}" alt="{{ $player->full_name_ar }}" class="w-full h-full object-cover">
+                        @else
+                            <span class="text-brand-700 font-bold text-base">{{ mb_substr($player->first_name_ar, 0, 1) }}</span>
+                        @endif
                     </div>
                     <div>
                         <div class="flex items-center space-x-1.5 space-x-reverse">
                             <h3 class="font-bold text-slate-900 text-sm">{{ $player->full_name_ar }}</h3>
                             <span class="bg-copper-50 text-copper-700 border border-copper-200 text-[10px] font-bold px-1.5 py-0.5 rounded">{{ $player->primary_position }}</span>
                         </div>
-                        <p class="text-xs text-slate-400 font-mono">{{ $player->passport_number }}</p>
+                        <p class="text-xs text-slate-500 font-mono flex items-center gap-2">
+                            <span>{{ $player->full_name_fr }}</span>
+                            @if($player->currentLicense)
+                                <span class="text-brand-700 font-bold">({{ $player->currentLicense->license_number }})</span>
+                            @endif
+                        </p>
                         <p class="text-xs text-slate-600 font-medium mt-0.5 flex items-center space-x-1.5 space-x-reverse">
                             <img src="{{ $player->currentLicense?->club?->logo_url }}" alt="{{ $player->currentLicense?->club?->acronym }}" class="w-5 h-5 object-contain inline-block">
                             <span>{{ $player->currentLicense?->club?->name_ar ?? 'النادي' }}</span>

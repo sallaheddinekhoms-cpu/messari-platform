@@ -88,13 +88,27 @@
                 <span class="hidden md:inline text-brand-300">منظومة «مساري» للفئات الشبانية (U13 إلى U20)</span>
             </div>
             <div class="flex items-center space-x-2 space-x-reverse">
-                <a href="{{ route('club.login') }}" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-3.5 py-1 rounded-lg text-xs transition shadow-xs flex items-center space-x-1.5 space-x-reverse">
-                    <span>🛡️</span>
-                    <span>فضاء الأندية</span>
-                </a>
-                <a href="/admin" class="bg-forest-950 hover:bg-forest-800 text-slate-300 hover:text-white font-bold px-3 py-1 rounded-lg text-xs transition border border-forest-700">
-                    لوحة الإدارة
-                </a>
+                @if(auth()->check())
+                    @if(auth()->user()->isClub())
+                        <a href="{{ route('club.dashboard') }}" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-3.5 py-1 rounded-lg text-xs transition shadow-xs flex items-center space-x-1.5 space-x-reverse">
+                            <span>🛡️</span>
+                            <span>{{ auth()->user()->club?->short_name ?? 'لوحة النادي' }}</span>
+                        </a>
+                    @else
+                        <a href="/admin" class="bg-forest-950 hover:bg-forest-800 text-copper-300 font-bold px-3 py-1 rounded-lg text-xs transition border border-forest-700 flex items-center space-x-1 space-x-reverse">
+                            <span>👑</span>
+                            <span>{{ auth()->user()->isDtr() ? 'فضاء المديرية الفنية (DTR)' : 'لوحة الإدارة' }}</span>
+                        </a>
+                    @endif
+                @else
+                    <a href="{{ route('club.login') }}" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-3.5 py-1 rounded-lg text-xs transition shadow-xs flex items-center space-x-1.5 space-x-reverse">
+                        <span>🛡️</span>
+                        <span>فضاء الأندية</span>
+                    </a>
+                    <a href="/admin/login" class="bg-forest-950 hover:bg-forest-800 text-slate-300 hover:text-white font-bold px-3 py-1 rounded-lg text-xs transition border border-forest-700">
+                        فضاء DTR والإدارة
+                    </a>
+                @endif
             </div>
         </div>
     </div>

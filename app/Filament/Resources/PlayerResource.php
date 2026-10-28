@@ -16,11 +16,11 @@ class PlayerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-identification';
 
-    protected static ?string $navigationGroup = 'الجواز الرياضي والمواهب';
+    protected static ?string $navigationGroup = 'الملف الرياضي والمواهب';
 
     protected static ?string $modelLabel = 'لاعب ناشئ';
 
-    protected static ?string $pluralModelLabel = 'سجل اللاعبين الشبان (الجواز الرياضي)';
+    protected static ?string $pluralModelLabel = 'سجل اللاعبين الشبان (الملف الرياضي)';
 
     public static function form(Form $form): Form
     {

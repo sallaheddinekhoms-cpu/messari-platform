@@ -104,11 +104,8 @@
                         </div>
                     </div>
 
-                    @php
-                        $demoPlayer = $featuredPlayers->first();
-                    @endphp
-
-                    @if($demoPlayer)
+                    @if($canViewTalents && $featuredPlayers->isNotEmpty())
+                        @php $demoPlayer = $featuredPlayers->first(); @endphp
                         <div class="flex items-start space-x-4 space-x-reverse">
                             <div class="w-22 h-26 rounded-xl bg-forest-950 border border-brand-600/70 p-1 flex-shrink-0 shadow relative">
                                 <div class="w-full h-full rounded-lg overflow-hidden flex items-center justify-center text-3xl font-black bg-forest-900">
@@ -171,6 +168,47 @@
                                 <span>←</span>
                             </a>
                         </div>
+                    @else
+                        <!-- Institutional Protected Presentation Card for Public Visitors -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <div class="w-14 h-14 rounded-2xl bg-forest-900 border border-brand-500 flex items-center justify-center text-2xl shadow-inner">
+                                    🛡️
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base text-white">الملف الرياضي والبيومتري الموحد</h4>
+                                    <p class="text-xs text-brand-300 font-medium">المنظومة الرقمية الشبانية المعتمدة (U13 - U20)</p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                سجل رياضي تراكمي موحد يوثق المسار الكروي، المعطيات البيومترية، والتقارير الفنية لكل لاعب شاب برابطة البليدة تحت إشراف المديرية الفنية الجهوية.
+                            </p>
+
+                            <div class="bg-forest-950/90 rounded-xl p-3 border border-forest-800 text-xs space-y-2">
+                                <div class="flex items-center justify-between text-[11px]">
+                                    <span class="text-slate-400">نظام الحماية والخصوصية:</span>
+                                    <span class="text-copper-400 font-bold">🔒 مقيّد بالاعتماد التقني</span>
+                                </div>
+                                <div class="flex items-center justify-between text-[11px]">
+                                    <span class="text-slate-400">إشراف وتتبع:</span>
+                                    <span class="text-white font-medium">المديرية واللجنة التقنية الجهوية (DTR)</span>
+                                </div>
+                                <div class="flex items-center justify-between text-[11px]">
+                                    <span class="text-slate-400">حسابات الأندية المخولة:</span>
+                                    <span class="text-brand-300 font-medium">66 نادياً رسمياً عبر الرابطة</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex items-center justify-between gap-2">
+                                <a href="/admin/login" class="flex-1 text-center bg-brand-600 hover:bg-brand-700 text-white font-bold py-2 px-3 rounded-xl text-xs transition shadow-sm">
+                                    دخول المديرية الفنية (DTR) ←
+                                </a>
+                                <a href="{{ route('club.login') }}" class="flex-1 text-center bg-forest-900 hover:bg-forest-800 text-brand-200 border border-brand-700/60 font-bold py-2 px-3 rounded-xl text-xs transition">
+                                    بوابة الأندية ←
+                                </a>
+                            </div>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -207,97 +245,157 @@
     <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200">
         <div>
             <span class="text-xs font-bold text-brand-700 uppercase tracking-wider block mb-1">
-                بنك المواهب والمديرية الفنية الجهوية
+                المديرية واللجنة التقنية الجهوية (DTR)
             </span>
             <h2 class="text-2xl font-black text-slate-900">
-                مواهب الأسبوع المعتمدة بالرابطة الجهوية بالبليدة
+                منظومة رصد وتطوير المواهب الكروية الشبانية
             </h2>
         </div>
         <p class="text-xs sm:text-sm text-slate-500 max-w-md mt-2 sm:mt-0 font-medium">
-            لاعبون ناشئون برزوا في جولات بطولات الفئات الصغرى وتمت معاينتهم من المديرية الفنية الجهوية.
+            تأطير ومتابعة تقنية دورية للفئات الشبانية (U13 إلى U20) عبر ولايات البليدة، تيبازة، المدية، الجلفة، وعين الدفلى.
         </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        @foreach($featuredPlayers as $player)
-            @php
-                $catCode = $player->currentLicense?->ageCategory?->code ?? 'U17';
-            @endphp
-            <div class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-brand-500 transition duration-200 flex flex-col justify-between shadow-xs group">
-                <div>
-                    <!-- Card Top -->
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-slate-400 font-mono text-[10px] font-bold">
-                            {{ $player->passport_number }}
-                        </span>
-                        <span class="bg-copper-50 text-copper-700 border border-copper-200 text-xs font-bold px-2 py-0.5 rounded">
-                            {{ $player->primary_position }}
-                        </span>
+    @if($canViewTalents)
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            @foreach($featuredPlayers as $player)
+                @php
+                    $catCode = $player->currentLicense?->ageCategory?->code ?? 'U17';
+                @endphp
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-brand-500 transition duration-200 flex flex-col justify-between shadow-xs group">
+                    <div>
+                        <!-- Card Top -->
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-slate-400 font-mono text-[10px] font-bold">
+                                {{ $player->passport_number }}
+                            </span>
+                            <span class="bg-copper-50 text-copper-700 border border-copper-200 text-xs font-bold px-2 py-0.5 rounded">
+                                {{ $player->primary_position }}
+                            </span>
+                        </div>
+
+                        <!-- Player Info -->
+                        <div class="flex items-center space-x-3 space-x-reverse mb-4">
+                            <div class="w-12 h-14 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition shadow-2xs relative">
+                                @if($player->photo_path)
+                                    <img src="{{ $player->photo_url }}" alt="{{ $player->full_name_ar }}" class="w-full h-full object-cover">
+                                @else
+                                    <span class="text-brand-700 font-bold text-base">{{ mb_substr($player->first_name_ar, 0, 1) }}</span>
+                                @endif
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-sm leading-tight group-hover:text-brand-700 transition">
+                                    {{ $player->full_name_ar }}
+                                </h3>
+                                <p class="text-xs text-slate-400 font-mono">{{ $player->full_name_fr }}</p>
+                                <span class="inline-block mt-1 text-[11px] font-semibold text-brand-800">
+                                    {{ $player->currentLicense?->club?->name_ar ?? 'النادي' }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Metrics -->
+                        <div class="space-y-1.5 py-3 border-t border-b border-slate-100 text-xs text-slate-600">
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-500">الفئة العمرية:</span>
+                                <span class="bg-slate-100 text-slate-800 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-200">
+                                    {{ $catCode }} ({{ $player->age }} سنة)
+                                </span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">القدم المفضلة:</span>
+                                <strong class="text-slate-800">{{ $player->dominant_foot === 'left' ? 'اليسرى' : ($player->dominant_foot === 'both' ? 'كلتاهما' : 'اليمنى') }}</strong>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">الولاية:</span>
+                                <strong class="text-slate-800">{{ $player->wilaya?->name_ar ?? 'البليدة' }}</strong>
+                            </div>
+                        </div>
+
+                        <!-- Technical Rating Badge -->
+                        @if($player->scoutingReports->isNotEmpty())
+                            @php $rep = $player->scoutingReports->first(); @endphp
+                            <div class="mt-2.5 flex items-center justify-between bg-forest-950 text-white px-3 py-1.5 rounded-xl border border-brand-600/70 shadow-2xs">
+                                <span class="text-[11px] font-bold text-brand-300 flex items-center space-x-1 space-x-reverse">
+                                    <span>🎯</span>
+                                    <span>التقييم الفني:</span>
+                                </span>
+                                <span class="text-xs font-black font-mono text-copper-400 bg-forest-900 px-2 py-0.5 rounded border border-forest-800">
+                                    ⭐ {{ number_format($rep->overall_score ?: 8.5, 1) }} / 10
+                                </span>
+                            </div>
+                        @endif
                     </div>
 
-                    <!-- Player Info -->
-                    <div class="flex items-center space-x-3 space-x-reverse mb-4">
-                        <div class="w-12 h-14 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition shadow-2xs relative">
-                            @if($player->photo_path)
-                                <img src="{{ $player->photo_url }}" alt="{{ $player->full_name_ar }}" class="w-full h-full object-cover">
-                            @else
-                                <span class="text-brand-700 font-bold text-base">{{ mb_substr($player->first_name_ar, 0, 1) }}</span>
-                            @endif
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-slate-900 text-sm leading-tight group-hover:text-brand-700 transition">
-                                {{ $player->full_name_ar }}
-                            </h3>
-                            <p class="text-xs text-slate-400 font-mono">{{ $player->full_name_fr }}</p>
-                            <span class="inline-block mt-1 text-[11px] font-semibold text-brand-800">
-                                {{ $player->currentLicense?->club?->name_ar ?? 'النادي' }}
-                            </span>
-                        </div>
+                    <!-- Action Button -->
+                    <div class="mt-4 pt-2">
+                        <a href="{{ route('passport.show', $player->uuid) }}" class="w-full flex items-center justify-center space-x-1 space-x-reverse bg-slate-900 hover:bg-brand-600 text-white font-bold py-2 rounded-xl text-xs transition">
+                            <span>معاينة الملف الرياضي</span>
+                            <span>←</span>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @else
+        <!-- Institutional DTR Showcase Box for Public Visitors -->
+        <div class="bg-gradient-to-br from-forest-950 via-forest-900 to-forest-950 rounded-3xl p-8 sm:p-10 border border-brand-800 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center relative z-10">
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="inline-flex items-center space-x-2 space-x-reverse bg-forest-900/90 text-copper-300 border border-copper-500/40 text-xs font-bold px-3 py-1 rounded-full">
+                        <span>🔒</span>
+                        <span>فضاء محمي • حماية المعطيات الشخصية والبيومترية للناشئين</span>
                     </div>
 
-                    <!-- Metrics -->
-                    <div class="space-y-1.5 py-3 border-t border-b border-slate-100 text-xs text-slate-600">
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-500">الفئة العمرية:</span>
-                            <span class="bg-slate-100 text-slate-800 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-200">
-                                {{ $catCode }} ({{ $player->age }} سنة)
-                            </span>
+                    <h3 class="text-2xl sm:text-3xl font-black leading-tight">
+                        بنك المواهب والتقارير الفنية الاستكشافية
+                    </h3>
+
+                    <p class="text-sm text-slate-300 leading-relaxed max-w-2xl">
+                        تطبيقاً للوائح الاتحادية الجزائرية لكرة القدم والرابطة الجهوية لحماية خصوصية اللاعبين القُصّر، فإن الملفات الرياضية، الفحوصات البيومترية، وتقارير المعاينة الميدانية للكشافين مشفرة ومتاحة حصرياً للأطر التقنية المعتمدة (المديرية الفنية DTR) وإدارات الأندية المعنية.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                        <div class="bg-forest-950/70 p-4 rounded-2xl border border-forest-800">
+                            <span class="text-copper-400 font-mono font-bold text-xl block">+6,500</span>
+                            <span class="text-xs text-slate-300">لاعب شاب موثق بيومترياً</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-slate-500">القدم المفضلة:</span>
-                            <strong class="text-slate-800">{{ $player->dominant_foot === 'left' ? 'اليسرى' : ($player->dominant_foot === 'both' ? 'كلتاهما' : 'اليمنى') }}</strong>
+                        <div class="bg-forest-950/70 p-4 rounded-2xl border border-forest-800">
+                            <span class="text-brand-300 font-mono font-bold text-xl block">66</span>
+                            <span class="text-xs text-slate-300">نادياً منخرطاً بالرابطة</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-slate-500">الولاية:</span>
-                            <strong class="text-slate-800">{{ $player->wilaya?->name_ar ?? 'البليدة' }}</strong>
+                        <div class="bg-forest-950/70 p-4 rounded-2xl border border-forest-800">
+                            <span class="text-white font-mono font-bold text-xl block">5 ولايات</span>
+                            <span class="text-xs text-slate-300">تغطية جغرافية شاملة للجهة</span>
                         </div>
                     </div>
-
-                    <!-- Technical Rating Badge -->
-                    @if($player->scoutingReports->isNotEmpty())
-                        @php $rep = $player->scoutingReports->first(); @endphp
-                        <div class="mt-2.5 flex items-center justify-between bg-forest-950 text-white px-3 py-1.5 rounded-xl border border-brand-600/70 shadow-2xs">
-                            <span class="text-[11px] font-bold text-brand-300 flex items-center space-x-1 space-x-reverse">
-                                <span>🎯</span>
-                                <span>التقييم الفني:</span>
-                            </span>
-                            <span class="text-xs font-black font-mono text-copper-400 bg-forest-900 px-2 py-0.5 rounded border border-forest-800">
-                                ⭐ {{ number_format($rep->overall_score ?: 8.5, 1) }} / 10
-                            </span>
-                        </div>
-                    @endif
                 </div>
 
-                <!-- Action Button -->
-                <div class="mt-4 pt-2">
-                    <a href="{{ route('passport.show', $player->uuid) }}" class="w-full flex items-center justify-center space-x-1 space-x-reverse bg-slate-900 hover:bg-brand-600 text-white font-bold py-2 rounded-xl text-xs transition">
-                        <span>معاينة الملف الرياضي</span>
-                        <span>←</span>
-                    </a>
+                <div class="bg-forest-950/90 p-6 rounded-2xl border border-brand-700/60 shadow-lg text-center space-y-4">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-600/20 border border-brand-500 flex items-center justify-center text-2xl text-brand-300">
+                        👑
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-base text-white">الاعتماد والولوج التقني</h4>
+                        <p class="text-xs text-slate-400 mt-1">خاص بأعضاء المديرية الفنية، كشافي الرابطة، والأندية</p>
+                    </div>
+
+                    <div class="space-y-2 pt-2">
+                        <a href="/admin/login" class="w-full flex items-center justify-center space-x-1.5 space-x-reverse bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition shadow-md">
+                            <span>دخول فضاء المديرية الفنية ولجنة الرابطة (DTR)</span>
+                            <span>←</span>
+                        </a>
+                        <a href="{{ route('club.login') }}" class="w-full flex items-center justify-center space-x-1.5 space-x-reverse bg-forest-900 hover:bg-forest-800 text-brand-200 border border-forest-700 font-bold py-2.5 px-4 rounded-xl text-xs transition">
+                            <span>دخول فضاء الأندية المعتمدة</span>
+                            <span>←</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endif
 </section>
 
 <!-- Standings & Fixtures Section -->

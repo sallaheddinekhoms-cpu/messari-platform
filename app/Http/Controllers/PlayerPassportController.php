@@ -46,7 +46,9 @@ class PlayerPassportController extends Controller
             ->whereHas('ageCategory', fn ($q) => $q->where('code', 'U17'))
             ->first();
 
-        return view('masari.home', compact('currentSeason', 'stats', 'categories', 'featuredPlayers', 'recentMatches', 'defaultCompetition'));
+        $canViewTalents = auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isDtr());
+
+        return view('masari.home', compact('currentSeason', 'stats', 'categories', 'featuredPlayers', 'recentMatches', 'defaultCompetition', 'canViewTalents'));
     }
 
     /**
@@ -64,6 +66,20 @@ class PlayerPassportController extends Controller
             'careerTimelines.ageCategory',
             'scoutingReports' => fn ($q) => $q->latest(),
         ])->where('uuid', $uuid)->firstOrFail();
+
+        // Privacy and Access Control Check
+        // Full passport is restricted to Admin, DTR, and the player's own Club
+        $isAuthorized = false;
+        if (auth()->check()) {
+            $user = auth()->user();
+            if ($user->canAccessTalentData($player->currentLicense?->club_id)) {
+                $isAuthorized = true;
+            }
+        }
+
+        if (!$isAuthorized) {
+            return view('masari.passport_restricted', compact('player'));
+        }
 
         // Ensure player has career timelines starting from 2021
         if ($player->careerTimelines->isEmpty()) {
@@ -219,6 +235,8 @@ class PlayerPassportController extends Controller
             'groups.rounds.matches.homeTeam.club',
             'groups.rounds.matches.awayTeam.club',
             'groups.rounds.matches.stadium',
+            'groups.rounds.matches.events.player',
+            'groups.rounds.matches.events.clubTeam',
         ]);
 
         if ($division) {
@@ -242,16 +260,26 @@ class PlayerPassportController extends Controller
     }
 
     /**
-     * Quick search players by name or passport code
+     * Quick search players by name or passport code (Restricted to Authorized Technical Personnel & Clubs)
      */
     public function search(Request $request)
     {
         $query = trim($request->input('q', ''));
+        $user = auth()->user();
+        $isAuthorized = $user && ($user->isAdmin() || $user->isDtr() || $user->isClub());
+
+        if (!$isAuthorized) {
+            return view('masari.search', [
+                'players' => collect(),
+                'query' => $query,
+                'isAuthorized' => false,
+            ]);
+        }
 
         if (empty($query)) {
             $players = collect();
         } else {
-            $players = Player::with(['currentLicense.club', 'currentLicense.ageCategory'])
+            $playersQuery = Player::with(['currentLicense.club', 'currentLicense.ageCategory'])
                 ->where(function ($q) use ($query) {
                     $q->where('passport_number', 'LIKE', "%{$query}%")
                       ->orWhere('first_name_ar', 'LIKE', "%{$query}%")
@@ -260,11 +288,20 @@ class PlayerPassportController extends Controller
                       ->orWhere('last_name_fr', 'LIKE', "%{$query}%")
                       ->orWhereHas('licenses', fn($l) => $l->where('license_number', 'LIKE', "%{$query}%"))
                       ->orWhereHas('currentLicense.club', fn($c) => $c->where('name_ar', 'LIKE', "%{$query}%")->orWhere('name_fr', 'LIKE', "%{$query}%"));
-                })
-                ->take(30)
-                ->get();
+                });
+
+            // If user is a club account, filter to their own club players
+            if ($user->isClub()) {
+                $playersQuery->whereHas('currentLicense', fn($l) => $l->where('club_id', $user->club_id));
+            }
+
+            $players = $playersQuery->take(30)->get();
         }
 
-        return view('masari.search', compact('players', 'query'));
+        return view('masari.search', [
+            'players' => $players,
+            'query' => $query,
+            'isAuthorized' => true,
+        ]);
     }
 }

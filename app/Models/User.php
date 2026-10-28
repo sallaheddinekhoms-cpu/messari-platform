@@ -21,7 +21,7 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         if ($panel->getId() === 'admin') {
-            return $this->role === 'admin' || str_contains($this->email, 'admin') || empty($this->club_id);
+            return $this->isAdmin() || $this->isDtr() || empty($this->club_id);
         }
         return true;
     }
@@ -53,7 +53,28 @@ class User extends Authenticatable implements FilamentUser
 
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return $this->role === 'admin' || str_contains($this->email, 'admin');
+    }
+
+    public function isDtr(): bool
+    {
+        return in_array($this->role, ['dtr', 'technical_director', 'technique']) || str_contains($this->email, 'technique');
+    }
+
+    /**
+     * Check if user is authorized to view confidential player/talent data
+     */
+    public function canAccessTalentData(?int $playerClubId = null): bool
+    {
+        if ($this->isAdmin() || $this->isDtr()) {
+            return true;
+        }
+
+        if ($this->isClub() && $playerClubId && (int)$this->club_id === (int)$playerClubId) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

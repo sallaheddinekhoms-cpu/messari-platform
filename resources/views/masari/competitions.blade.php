@@ -252,6 +252,34 @@
                                                 </div>
                                             </div>
 
+                                            @if($match->events->isNotEmpty())
+                                                <div class="mt-2 pt-2 border-t border-slate-100 text-[10px] space-y-1">
+                                                    @php
+                                                        $goals = $match->events->whereIn('event_type', ['goal', 'penalty_goal', 'own_goal']);
+                                                        $cards = $match->events->whereIn('event_type', ['yellow_card', 'red_card']);
+                                                    @endphp
+                                                    @if($goals->isNotEmpty())
+                                                        <div class="flex items-center space-x-1.5 space-x-reverse text-slate-700 flex-wrap gap-1">
+                                                            <span class="text-xs">⚽</span>
+                                                            @foreach($goals as $g)
+                                                                <span class="bg-slate-100 px-1.5 py-0.5 rounded font-medium text-slate-800">
+                                                                    {{ $g->player?->full_name_ar ?? 'لاعب' }} ({{ $g->minute }}')
+                                                                </span>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
+                                                    @if($cards->isNotEmpty())
+                                                        <div class="flex items-center space-x-1.5 space-x-reverse text-slate-500 flex-wrap gap-1">
+                                                            @foreach($cards as $c)
+                                                                <span class="px-1.5 py-0.5 rounded text-[9px] font-bold {{ $c->event_type === 'red_card' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-800' }}">
+                                                                    {{ $c->event_type === 'red_card' ? '🟥 طرد' : '🟨 إنذار' }}: {{ $c->player?->full_name_ar ?? 'لاعب' }} ({{ $c->minute }}')
+                                                                </span>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            @endif
+
                                             <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
                                                 <span>التاريخ: {{ $match->match_date->format('Y-m-d') }}</span>
                                                 <span>{{ $match->referee_name }}</span>

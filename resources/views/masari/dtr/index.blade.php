@@ -47,6 +47,13 @@
                     </a>
                 @endif
 
+                @if(auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isDtr()))
+                    <a href="{{ url('/admin/coach-applications') }}" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-5 py-3 rounded-xl text-sm transition shadow-lg flex items-center space-x-1.5 space-x-reverse border border-amber-500">
+                        <span>⚙️</span>
+                        <span>لوحة تدقيق DTR</span>
+                    </a>
+                @endif
+
                 <a href="#courses-catalog" class="bg-forest-950 hover:bg-forest-900 text-slate-300 border border-forest-800 font-bold px-4 py-3 rounded-xl text-sm transition">
                     <span>دليل مسالك التكوين الشامل ↓</span>
                 </a>

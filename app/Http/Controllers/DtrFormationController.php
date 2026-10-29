@@ -305,6 +305,41 @@ class DtrFormationController extends Controller
     }
 
     /**
+     * Print candidate application dossier and receipt
+     */
+    public function printCandidateDossier($id)
+    {
+        $application = CoachApplication::with(['course', 'wilaya'])->findOrFail($id);
+
+        $user = Auth::user();
+        if (! $user->isAdmin() && ! $user->isDtr() && (int)$user->id !== (int)$application->user_id) {
+            abort(403, 'غير مصرح لك بمعاينة هذه الوثيقة.');
+        }
+
+        return view('masari.dtr.print-dossier', compact('application'));
+    }
+
+    /**
+     * Print course approved candidates roster (القائمة الرسمية للمترشحين المقبولين للتربص)
+     */
+    public function printCourseRoster($id)
+    {
+        $user = Auth::user();
+        if (! $user->isAdmin() && ! $user->isDtr()) {
+            abort(403, 'غير مصرح لك بالوصول لهذه القائمة الإدارية.');
+        }
+
+        $course = CoachCourse::withCount('applications')->findOrFail($id);
+        $applications = CoachApplication::where('coach_course_id', $course->id)
+            ->with('wilaya')
+            ->orderByRaw("FIELD(status, 'approved', 'reserved', 'pending', 'rejected')")
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        return view('masari.dtr.print-roster', compact('course', 'applications'));
+    }
+
+    /**
      * Logout
      */
     public function logout(Request $request)

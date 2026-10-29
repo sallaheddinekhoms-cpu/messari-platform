@@ -195,8 +195,8 @@
                     </h2>
                     <p class="text-xs text-slate-500 mt-0.5">الصيغ المعتمدة: PDF, JPG, PNG بحجم أقصى 4 ميغابايت لكل وثيقة</p>
                 </div>
-                <span class="bg-forest-900 text-copper-300 border border-forest-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full">
-                    الملف الكامل
+                <span id="file-counter-badge" class="bg-forest-900 text-copper-300 border border-forest-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full">
+                    0 / 9 وثائق محددة
                 </span>
             </div>
 
@@ -305,4 +305,26 @@
         </div>
     </form>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInputs = document.querySelectorAll('input[type="file"]');
+        const badge = document.getElementById('file-counter-badge');
+        function updateCounter() {
+            let count = 0;
+            fileInputs.forEach(input => {
+                if (input.files && input.files.length > 0) count++;
+            });
+            if (badge) {
+                badge.textContent = count + ' / 9 وثائق محددة';
+                if (count >= 9) {
+                    badge.className = 'bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full';
+                } else if (count > 0) {
+                    badge.className = 'bg-amber-500 text-slate-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full';
+                }
+            }
+        }
+        fileInputs.forEach(input => input.addEventListener('change', updateCounter));
+    });
+</script>
 @endsection

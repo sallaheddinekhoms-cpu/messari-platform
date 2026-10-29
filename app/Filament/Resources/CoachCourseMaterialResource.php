@@ -23,7 +23,21 @@ class CoachCourseMaterialResource extends Resource
 
     protected static ?string $pluralModelLabel = 'الدروس والمحتوى البيداغوجي للتربصات';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
+
+    public static function getNavigationBadge(): ?string
+    {
+        $count = CoachCourseMaterial::where('is_active', true)
+            ->where(function ($q) {
+                $q->whereNull('expires_at')->orWhere('expires_at', '>', now());
+            })->count();
+        return $count > 0 ? "{$count} متاح" : null;
+    }
+
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return 'info';
+    }
 
     public static function form(Form $form): Form
     {
@@ -150,6 +164,39 @@ class CoachCourseMaterialResource extends Resource
                     ->relationship('course', 'title'),
             ])
             ->actions([
+                Tables\Actions\Action::make('extend_15_days')
+                    ->label('+15 يوماً')
+                    ->icon('heroicon-o-clock')
+                    ->color('warning')
+                    ->tooltip('تمديد فترة الإتاحة بـ 15 يوماً إضافية')
+                    ->requiresConfirmation()
+                    ->modalHeading('تمديد إتاحة المحاضرة البيداغوجية')
+                    ->modalDescription('سيتم تمديد تاريخ انتهاء صلاحية التحميل للمترشحين بـ 15 يوماً إضافية ابتداءً من الآن أو تاريخ الانتهاء الحالي.')
+                    ->action(function (CoachCourseMaterial $record) {
+                        $base = ($record->expires_at && $record->expires_at->isFuture())
+                            ? $record->expires_at
+                            : now();
+                        $newExpiry = $base->copy()->addDays(15);
+                        $record->update([
+                            'expires_at' => $newExpiry,
+                            'duration_days' => $record->duration_days + 15,
+                            'is_active' => true,
+                        ]);
+
+                        \Filament\Notifications\Notification::make()
+                            ->title('تم تمديد إتاحة المحاضرة بنجاح لغاية ' . $newExpiry->format('Y/m/d H:i'))
+                            ->success()
+                            ->send();
+                    }),
+
+                Tables\Actions\Action::make('open_file')
+                    ->label('تحميل الملف')
+                    ->icon('heroicon-o-arrow-down-tray')
+                    ->color('success')
+                    ->visible(fn (CoachCourseMaterial $record) => !empty($record->file_path))
+                    ->url(fn (CoachCourseMaterial $record) => asset('storage/' . $record->file_path))
+                    ->openUrlInNewTab(),
+
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])

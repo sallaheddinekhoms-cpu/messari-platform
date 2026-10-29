@@ -17,7 +17,7 @@ class CoachApplicationResource extends Resource
 {
     protected static ?string $model = CoachApplication::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
 
     protected static ?string $navigationGroup = 'المديرية الفنية الجهوية';
 
@@ -25,7 +25,18 @@ class CoachApplicationResource extends Resource
 
     protected static ?string $pluralModelLabel = 'طلبات وملفات تكوين المدربين';
 
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 2;
+
+    public static function getNavigationBadge(): ?string
+    {
+        $count = CoachApplication::where('status', 'pending')->count();
+        return $count > 0 ? (string)$count : null;
+    }
+
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return 'warning';
+    }
 
     public static function form(Form $form): Form
     {
@@ -361,6 +372,14 @@ class CoachApplicationResource extends Resource
                             ->danger()
                             ->send();
                     }),
+
+                Tables\Actions\Action::make('print_dossier')
+                    ->label('استمارة ووصل الإيداع')
+                    ->icon('heroicon-o-printer')
+                    ->color('gray')
+                    ->tooltip('طباعة استمارة ووصل إيداع الملف الرسمي للمترشح')
+                    ->url(fn (CoachApplication $record) => route('dtr.candidate.print-dossier', $record->id))
+                    ->openUrlInNewTab(),
 
                 Tables\Actions\EditAction::make()
                     ->label('معاينة كاملة وتعديل'),

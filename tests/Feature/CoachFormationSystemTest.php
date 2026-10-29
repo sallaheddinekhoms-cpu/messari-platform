@@ -113,4 +113,38 @@ class CoachFormationSystemTest extends TestCase
         $response->assertSee('المحتوى البيداغوجي والدروس المبرمجة');
         $response->assertSee('المحور الأول');
     }
+
+    public function test_candidate_dossier_print_renders_official_form(): void
+    {
+        $user = User::where('role', 'coach')->first() ?? User::factory()->create(['role' => 'coach']);
+        $app = CoachApplication::first();
+
+        $response = $this->actingAs($user)->get(route('dtr.candidate.print-dossier', $app->id));
+        $response->assertStatus(200);
+        $response->assertSee('الجمهورية الجزائرية الديمقراطية الشعبية');
+        $response->assertSee('المديرية واللجنة التقنية الجهوية (DTR)');
+        $response->assertSee('استمارة ترشح ووصل إيداع ملف تكوين المدربين');
+        $response->assertSee($app->application_number);
+    }
+
+    public function test_course_roster_print_renders_for_dtr_officer(): void
+    {
+        $dtrUser = User::where('role', 'dtr')->first();
+        $course = CoachCourse::first();
+
+        $response = $this->actingAs($dtrUser)->get(route('dtr.course.print-roster', $course->id));
+        $response->assertStatus(200);
+        $response->assertSee('القائمة الاسمية الرسمية للمترشحين لدورة التكوين');
+        $response->assertSee($course->title);
+    }
+
+    public function test_dtr_officer_can_access_filament_panel(): void
+    {
+        $dtrUser = User::where('role', 'dtr')->first();
+        $this->assertTrue($dtrUser->canAccessPanel(filament()->getPanel('admin')));
+
+        $response = $this->actingAs($dtrUser)->get('/admin');
+        $response->assertStatus(200);
+        $response->assertSee('المديرية الفنية الجهوية');
+    }
 }

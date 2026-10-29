@@ -76,8 +76,13 @@
                         </h2>
                     </div>
 
-                    <!-- Status Badge -->
-                    <div>
+                    <!-- Status Badge & Print Actions -->
+                    <div class="flex items-center space-x-2 space-x-reverse">
+                        <a href="{{ route('dtr.candidate.print-dossier', $app->id) }}" target="_blank" class="inline-flex items-center space-x-1.5 space-x-reverse bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-bold px-3 py-1.5 rounded-xl text-xs transition shadow-2xs">
+                            <span>🖨️</span>
+                            <span>طباعة وصل واستمارة الملف</span>
+                        </a>
+
                         @if($app->status === 'approved')
                             <span class="inline-flex items-center space-x-1.5 space-x-reverse bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold px-3.5 py-1.5 rounded-full text-xs shadow-2xs">
                                 <span>✓</span>
@@ -104,6 +109,53 @@
 
                 <!-- App Body Details -->
                 <div class="p-6 sm:p-8 space-y-6">
+                    <!-- Progress Stepper -->
+                    <div class="bg-slate-50/80 p-4 rounded-2xl border border-slate-200">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                            <!-- Step 1 -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-black shadow-xs mb-1.5">
+                                    ✓
+                                </div>
+                                <span class="text-xs font-bold text-slate-800">1. إيداع الملف</span>
+                                <span class="text-[10px] text-emerald-600 font-semibold">مكتمل بالوثائق</span>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 rounded-full {{ in_array($app->status, ['approved', 'reserved']) ? 'bg-emerald-600 text-white' : ($app->status === 'pending' ? 'bg-amber-500 text-white animate-pulse' : 'bg-slate-300 text-slate-700') }} flex items-center justify-center text-xs font-black shadow-xs mb-1.5">
+                                    {{ in_array($app->status, ['approved']) ? '✓' : ($app->status === 'reserved' ? '!' : '2') }}
+                                </div>
+                                <span class="text-xs font-bold text-slate-800">2. تدقيق DTR</span>
+                                <span class="text-[10px] {{ $app->status === 'pending' ? 'text-amber-600 font-bold' : ($app->status === 'reserved' ? 'text-rose-600 font-bold' : 'text-slate-500') }}">
+                                    {{ $app->status === 'pending' ? 'جاري التدقيق' : ($app->status === 'reserved' ? 'مطلوب استدراك' : 'تم التدقيق') }}
+                                </span>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 rounded-full {{ $app->status === 'approved' ? 'bg-emerald-600 text-white' : ($app->status === 'rejected' ? 'bg-rose-600 text-white' : 'bg-slate-200 text-slate-500') }} flex items-center justify-center text-xs font-black shadow-xs mb-1.5">
+                                    {{ $app->status === 'approved' ? '✓' : ($app->status === 'rejected' ? '✕' : '3') }}
+                                </div>
+                                <span class="text-xs font-bold text-slate-800">3. المصادقة والقبول</span>
+                                <span class="text-[10px] {{ $app->status === 'approved' ? 'text-emerald-600 font-bold' : 'text-slate-400' }}">
+                                    {{ $app->status === 'approved' ? 'مقبول رسمياً' : ($app->status === 'rejected' ? 'مرفوض' : 'في الانتظار') }}
+                                </span>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 rounded-full {{ $app->status === 'approved' ? 'bg-brand-600 text-white' : 'bg-slate-200 text-slate-400' }} flex items-center justify-center text-xs font-black shadow-xs mb-1.5">
+                                    4
+                                </div>
+                                <span class="text-xs font-bold text-slate-800">4. التربص والدروس</span>
+                                <span class="text-[10px] {{ $app->status === 'approved' ? 'text-brand-600 font-bold' : 'text-slate-400' }}">
+                                    {{ $app->status === 'approved' ? 'متاح للتحميل' : 'بعد القبول' }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Notice according to status -->
                     @if($app->status === 'approved')
                         <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 text-emerald-900 text-xs space-y-2">

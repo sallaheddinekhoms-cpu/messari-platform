@@ -31,6 +31,8 @@ Route::prefix('dtr')->name('dtr.')->group(function () {
         Route::get('/dashboard', [DtrFormationController::class, 'candidateDashboard'])->name('dashboard');
         Route::post('/application/{id}/update-reserve', [DtrFormationController::class, 'updateReservation'])->name('application.update-reserve');
         Route::get('/material/{materialId}/application/{applicationId}', [DtrFormationController::class, 'downloadMaterial'])->name('material.download');
+        Route::get('/application/{id}/print', [DtrFormationController::class, 'printCandidateDossier'])->name('candidate.print-dossier');
+        Route::get('/course/{id}/print-roster', [DtrFormationController::class, 'printCourseRoster'])->name('course.print-roster');
     });
 });
 

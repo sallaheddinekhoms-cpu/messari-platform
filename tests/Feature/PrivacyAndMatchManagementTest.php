@@ -98,7 +98,7 @@ class PrivacyAndMatchManagementTest extends TestCase
     {
         $response = $this->get('/dtr');
         $response->assertStatus(200);
-        $response->assertSee('اللجنة التقنية الجهوية');
-        $response->assertSee('Commission Technique Régionale');
+        $response->assertSee('المنظومة الرقمية لتكوين المدربين');
+        $response->assertSee('المديرية واللجنة التقنية الجهوية');
     }
 }

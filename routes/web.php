@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\PlayerApiController;
 use App\Http\Controllers\ClubPortalController;
+use App\Http\Controllers\DtrFormationController;
 use App\Http\Controllers\PlayerPassportController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,10 +14,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PlayerPassportController::class, 'index'])->name('home');
 Route::get('/competitions', [PlayerPassportController::class, 'competitions'])->name('competitions.index');
-Route::get('/dtr', [PlayerPassportController::class, 'dtr'])->name('dtr.index');
 Route::get('/media', [\App\Http\Controllers\MediaController::class, 'index'])->name('media.index');
 Route::get('/passport/{uuid}', [PlayerPassportController::class, 'show'])->name('passport.show');
 Route::get('/search', [PlayerPassportController::class, 'search'])->name('players.search');
+
+// DTR Coaching & Training System (المنظومة التكوينية الشاملة للمدربين - المديرية التقنية الجهوية)
+Route::prefix('dtr')->name('dtr.')->group(function () {
+    Route::get('/', [DtrFormationController::class, 'index'])->name('index');
+    Route::get('/apply', [DtrFormationController::class, 'apply'])->name('apply');
+    Route::post('/apply', [DtrFormationController::class, 'submitApplication'])->name('apply.submit');
+    Route::get('/login', [DtrFormationController::class, 'showLogin'])->name('login');
+    Route::post('/login', [DtrFormationController::class, 'login'])->name('login.post');
+    Route::post('/logout', [DtrFormationController::class, 'logout'])->name('logout');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', [DtrFormationController::class, 'candidateDashboard'])->name('dashboard');
+        Route::post('/application/{id}/update-reserve', [DtrFormationController::class, 'updateReservation'])->name('application.update-reserve');
+        Route::get('/material/{materialId}/application/{applicationId}', [DtrFormationController::class, 'downloadMaterial'])->name('material.download');
+    });
+});
 
 // Club Portal Routes (بوابة حسابات الأندية الرسمية)
 Route::prefix('club')->name('club.')->group(function () {

@@ -17,7 +17,8 @@ class PassportTest extends TestCase
         $player = Player::first();
         $this->assertNotNull($player);
 
-        $response = $this->get('/passport/' . $player->uuid);
+        $admin = \App\Models\User::where('role', 'admin')->first() ?? \App\Models\User::first();
+        $response = $this->actingAs($admin)->get('/passport/' . $player->uuid);
         $response->assertStatus(200);
         $response->assertSee($player->full_name_ar);
         $response->assertSee($player->passport_number);

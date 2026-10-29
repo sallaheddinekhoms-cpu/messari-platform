@@ -89,7 +89,12 @@
             </div>
             <div class="flex items-center space-x-2 space-x-reverse">
                 @if(auth()->check())
-                    @if(auth()->user()->isClub())
+                    @if(auth()->user()->role === 'coach')
+                        <a href="{{ route('dtr.dashboard') }}" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-3 py-1 rounded-lg text-xs transition shadow-xs flex items-center space-x-1.5 space-x-reverse">
+                            <span>🎓</span>
+                            <span>فضاء المترشح: {{ auth()->user()->name }}</span>
+                        </a>
+                    @elseif(auth()->user()->isClub())
                         <a href="{{ route('club.dashboard') }}" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-3.5 py-1 rounded-lg text-xs transition shadow-xs flex items-center space-x-1.5 space-x-reverse">
                             <span>🛡️</span>
                             <span>{{ auth()->user()->club?->short_name ?? 'لوحة النادي' }}</span>

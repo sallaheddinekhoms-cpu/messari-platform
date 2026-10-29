@@ -136,41 +136,34 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-1 space-x-reverse">
-                    <a href="{{ route('home') }}" class="px-3 py-2 rounded-lg text-xs font-bold transition {{ request()->routeIs('home') ? 'bg-brand-50 text-brand-800 border border-brand-200' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50' }}">
+                    <a href="{{ route('home') }}" class="px-3.5 py-2 rounded-lg text-xs font-bold transition {{ request()->routeIs('home') ? 'bg-brand-50 text-brand-800 border border-brand-200' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50' }}">
                         الرئيسية
                     </a>
-                    <a href="{{ route('competitions.index') }}" class="px-3 py-2 rounded-lg text-xs font-bold transition {{ request()->routeIs('competitions.*') ? 'bg-brand-50 text-brand-800 border border-brand-200' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50' }}">
+                    <a href="{{ route('competitions.index') }}" class="px-3.5 py-2 rounded-lg text-xs font-bold transition {{ request()->routeIs('competitions.*') ? 'bg-brand-50 text-brand-800 border border-brand-200' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50' }}">
                         مركز البطولات والرزنامة
                     </a>
-                    <a href="{{ route('media.index') }}" class="px-3 py-2 rounded-lg text-xs font-bold transition {{ request()->routeIs('media.*') ? 'bg-brand-50 text-brand-800 border border-brand-200' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50' }} flex items-center space-x-1 space-x-reverse">
+                    <a href="{{ route('dtr.index') }}" class="px-3.5 py-2 rounded-lg text-xs font-bold transition {{ request()->routeIs('dtr.*') ? 'bg-brand-50 text-brand-800 border border-brand-200' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50' }} flex items-center space-x-1.5 space-x-reverse">
+                        <span class="w-2 h-2 rounded-full bg-brand-600"></span>
+                        <span>اللجنة التقنية الجهوية</span>
+                    </a>
+                    <a href="{{ route('media.index') }}" class="px-3.5 py-2 rounded-lg text-xs font-bold transition {{ request()->routeIs('media.*') ? 'bg-brand-50 text-brand-800 border border-brand-200' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50' }} flex items-center space-x-1 space-x-reverse">
                         <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
                         <span>معرض الصور والفيديوهات</span>
                     </a>
-                    <a href="{{ route('home') }}#featured-talents" class="px-3 py-2 rounded-lg text-xs font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition flex items-center space-x-1.5 space-x-reverse">
-                        <span class="w-2 h-2 rounded-full bg-brand-600"></span>
-                        <span>بنك المواهب الشبانية</span>
-                    </a>
-                    <a href="{{ route('home') }}#about-passport" class="px-3 py-2 rounded-lg text-xs font-bold text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition">
-                        الملف الرياضي
-                    </a>
-                    <a href="{{ route('club.login') }}" class="px-3 py-2 rounded-lg text-xs font-bold transition {{ request()->routeIs('club.*') ? 'bg-emerald-50 text-emerald-800 border border-emerald-300' : 'text-emerald-800 hover:text-emerald-900 bg-emerald-50/60 hover:bg-emerald-100/80 border border-emerald-200' }} flex items-center space-x-1.5 space-x-reverse">
+                    <a href="{{ route('club.login') }}" class="px-3.5 py-2 rounded-lg text-xs font-bold transition {{ request()->routeIs('club.*') ? 'bg-emerald-50 text-emerald-800 border border-emerald-300' : 'text-emerald-800 hover:text-emerald-900 bg-emerald-50/60 hover:bg-emerald-100/80 border border-emerald-200' }} flex items-center space-x-1.5 space-x-reverse">
                         <span>🛡️</span>
                         <span>بوابة الأندية</span>
                     </a>
                 </nav>
 
-                <!-- Left Section: Search Input + Official MESSARI Circular Emblem (الجهة اليسرى) -->
+                <!-- Left Section: Direct Shortcut + Official MESSARI Circular Emblem (الجهة اليسرى) -->
                 <div class="flex items-center space-x-3.5 space-x-reverse">
-                    <!-- Search Input Desktop -->
-                    <div class="hidden lg:block w-52 xl:w-60">
-                        <form action="{{ route('players.search') }}" method="GET">
-                            <div class="relative">
-                                <input type="text" name="q" placeholder="ابحث برقم الملف أو اللاعب..." class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 pr-8 pl-3 text-xs font-medium focus:ring-1 focus:ring-brand-600 focus:border-brand-600 text-slate-800 transition">
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-2.5 pointer-events-none text-brand-600">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                </div>
-                            </div>
-                        </form>
+                    <!-- Quick Schedule Action Button -->
+                    <div class="hidden lg:flex items-center space-x-2 space-x-reverse">
+                        <a href="{{ route('competitions.index') }}" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-3 py-1.5 rounded-lg text-xs transition flex items-center space-x-1 space-x-reverse">
+                            <span>⚽</span>
+                            <span>النتائج والترتيب</span>
+                        </a>
                     </div>
 
                     <!-- Platform Circular Emblem on the Left Side -->
@@ -197,15 +190,13 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div x-show="mobileMenu" class="md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3">
-            <form action="{{ route('players.search') }}" method="GET" class="mb-4">
-                <input type="text" name="q" placeholder="ابحث برقم الملف أو اسم اللاعب..." class="w-full bg-slate-100 border border-slate-200 rounded-lg py-2.5 px-3 text-xs focus:ring-1 focus:ring-brand-600">
-            </form>
+        <div x-show="mobileMenu" class="md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2">
             <a href="{{ route('home') }}" class="block px-3 py-2 rounded-lg font-bold text-slate-800 hover:bg-slate-50">الرئيسية</a>
             <a href="{{ route('competitions.index') }}" class="block px-3 py-2 rounded-lg font-bold text-slate-800 hover:bg-slate-50">مركز البطولات والرزنامة</a>
-            <a href="{{ route('media.index') }}" class="block px-3 py-2 rounded-lg font-bold text-brand-700 bg-brand-50 hover:bg-brand-100">معرض الصور والفيديوهات</a>
-            <a href="{{ route('home') }}#featured-talents" class="block px-3 py-2 rounded-lg font-bold text-slate-800 hover:bg-slate-50">بنك المواهب الشبانية</a>
-            <a href="/admin" class="block px-3 py-2.5 rounded-lg bg-brand-600 text-white font-bold text-center">دخول لوحة الإدارة والأندية</a>
+            <a href="{{ route('dtr.index') }}" class="block px-3 py-2 rounded-lg font-bold text-brand-800 bg-brand-50 hover:bg-brand-100">اللجنة التقنية الجهوية</a>
+            <a href="{{ route('media.index') }}" class="block px-3 py-2 rounded-lg font-bold text-slate-800 hover:bg-slate-50">معرض الصور والفيديوهات</a>
+            <a href="{{ route('club.login') }}" class="block px-3 py-2 rounded-lg font-bold text-emerald-800 hover:bg-emerald-50">بوابة الأندية</a>
+            <a href="/admin" class="block px-3 py-2.5 rounded-lg bg-forest-900 text-white font-bold text-center mt-2">لوحة الإدارة</a>
         </div>
     </header>
 
@@ -229,7 +220,7 @@
                         </div>
                     </div>
                     <p class="text-xs leading-relaxed max-w-md text-slate-300">
-                        المنصة الرسمية المعتمدة لتوثيق وتتبع المسار الرياضي التراكمي للاعبي الفئات الصغرى (U13, U15, U17, U19, U20)، وإصدار الملف الرياضي الرقمي برمز QR للتحقق الميداني الفوري.
+                        المنظومة الرقمية المعتمدة لبطولات الفئات الشبانية (U13 إلى U20) بالرابطة الجهوية لكرة القدم بالبليدة، الجداول، الرزنامات، والنتائج الرسمية.
                     </p>
                     <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-300">
                         <span class="bg-forest-900 px-2.5 py-0.5 rounded border border-forest-800">البليدة (09)</span>
@@ -260,12 +251,12 @@
                 <div>
                     <h4 class="text-white font-bold mb-3 text-sm flex items-center space-x-1.5 space-x-reverse">
                         <span class="w-2 h-2 rounded-full bg-copper-600"></span>
-                        <span>بوابة الأندية والمسؤولين</span>
+                        <span>فضاء الإدارة واللجنة التقنية</span>
                     </h4>
                     <ul class="space-y-2 text-xs">
-                        <li><a href="/admin" class="hover:text-brand-300 transition">لوحة تحكم مسؤولي الأندية (Filament)</a></li>
-                        <li><a href="/admin" class="hover:text-brand-300 transition">بوابة المديرية الفنية الجهوية</a></li>
-                        <li><a href="{{ route('players.search') }}" class="hover:text-brand-300 transition">التحقق الميداني من الملف الرياضي</a></li>
+                        <li><a href="{{ route('dtr.index') }}" class="hover:text-brand-300 transition">اللجنة التقنية الجهوية (CTR / DTR)</a></li>
+                        <li><a href="{{ route('club.login') }}" class="hover:text-brand-300 transition">بوابة الأندية المعتمدة</a></li>
+                        <li><a href="/admin/login" class="hover:text-brand-300 transition">فضاء الإدارة واللجنة</a></li>
                         <li><a href="{{ route('competitions.index') }}" class="hover:text-brand-300 transition">جداول الترتيب ورزنامة الجولات</a></li>
                     </ul>
                 </div>

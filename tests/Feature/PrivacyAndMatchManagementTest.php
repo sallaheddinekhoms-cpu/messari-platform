@@ -83,4 +83,22 @@ class PrivacyAndMatchManagementTest extends TestCase
             'minute' => 55,
         ]);
     }
+
+    public function test_homepage_is_clean_and_shows_no_player_passports_or_restricted_banner(): void
+    {
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        $response->assertSee('اللجنة التقنية الجهوية');
+        $response->assertSee('مركز البطولات والرزنامة');
+        $response->assertDontSee('مواهب الأسبوع');
+        $response->assertDontSee('فضاء تقني مقيّد');
+    }
+
+    public function test_dtr_page_loads_successfully(): void
+    {
+        $response = $this->get('/dtr');
+        $response->assertStatus(200);
+        $response->assertSee('اللجنة التقنية الجهوية');
+        $response->assertSee('Commission Technique Régionale');
+    }
 }

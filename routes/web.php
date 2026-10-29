@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PlayerPassportController::class, 'index'])->name('home');
-Route::get('/passport/{uuid}', [PlayerPassportController::class, 'show'])->name('passport.show');
 Route::get('/competitions', [PlayerPassportController::class, 'competitions'])->name('competitions.index');
+Route::get('/dtr', [PlayerPassportController::class, 'dtr'])->name('dtr.index');
 Route::get('/media', [\App\Http\Controllers\MediaController::class, 'index'])->name('media.index');
+Route::get('/passport/{uuid}', [PlayerPassportController::class, 'show'])->name('passport.show');
 Route::get('/search', [PlayerPassportController::class, 'search'])->name('players.search');
 
 // Club Portal Routes (بوابة حسابات الأندية الرسمية)

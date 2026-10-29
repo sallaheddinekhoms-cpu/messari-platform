@@ -20,20 +20,13 @@ class PlayerPassportController extends Controller
         $currentSeason = Season::current() ?? Season::latest()->first();
 
         $stats = [
-            'total_players' => Player::count(),
             'total_clubs' => \App\Models\Club::where('is_active', true)->count(),
+            'total_competitions' => Competition::count(),
             'total_matches' => GameMatch::count(),
             'total_categories' => AgeCategory::count(),
         ];
 
         $categories = AgeCategory::all();
-
-        // Featured talents (players with official biometric photos)
-        $featuredPlayers = Player::with(['currentLicense.club', 'currentLicense.ageCategory', 'scoutingReports'])
-            ->whereNotNull('photo_path')
-            ->latest()
-            ->take(8)
-            ->get();
 
         // Recent & upcoming youth matches
         $recentMatches = GameMatch::with(['homeTeam.club', 'awayTeam.club', 'stadium', 'round.group.competition.ageCategory'])
@@ -46,9 +39,18 @@ class PlayerPassportController extends Controller
             ->whereHas('ageCategory', fn ($q) => $q->where('code', 'U17'))
             ->first();
 
-        $canViewTalents = auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isDtr());
+        return view('masari.home', compact('currentSeason', 'stats', 'categories', 'recentMatches', 'defaultCompetition'));
+    }
 
-        return view('masari.home', compact('currentSeason', 'stats', 'categories', 'featuredPlayers', 'recentMatches', 'defaultCompetition', 'canViewTalents'));
+    /**
+     * Regional Technical Directorate (المديرية واللجنة التقنية الجهوية - DTR / CTR)
+     */
+    public function dtr(Request $request)
+    {
+        $categories = AgeCategory::all();
+        $season = Season::current() ?? Season::latest()->first();
+
+        return view('masari.dtr', compact('categories', 'season'));
     }
 
     /**
